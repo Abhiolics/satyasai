@@ -179,7 +179,7 @@ export default function PlantDetailModal({
                 <ArrowRightIcon className="w-4 h-4" />
               </button>
               <a
-                href={`https://wa.me/919422000000?text=Hello%20Satyasai%20Navkisan%20Green%20India,%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(
+                href={`https://wa.me/917942637905?text=Hello%20Satyasai%20Navkisan%20Green%20India,%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(
                   plant.name
                 )}%20saplings.`}
                 target="_blank"

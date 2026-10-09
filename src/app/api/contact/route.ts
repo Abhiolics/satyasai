@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const recipientEmail = "abiolics@gmail.com";
+    const recipientEmail = "navikisan@gmail.com";
     const timestamp = new Date().toISOString();
 
     // Prepare query payload formatted for logging & email dispatch
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error processing contact form submission:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to process query. Please reach us at abiolics@gmail.com directly." },
+      { success: false, error: "Failed to process query. Please reach us at navikisan@gmail.com directly." },
       { status: 500 }
     );
   }

@@ -33,8 +33,8 @@ export default function Footer() {
       <div className="bg-[#1b3e2b] text-emerald-50 px-4 sm:px-6 lg:px-12 pt-10 pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Main 4-Column Grid with Vertical Column Dividers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 pb-12">
-            
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-8 lg:gap-0 pb-12">
+
             {/* ---------------------------------------------------- */}
             {/* COLUMN 1: Company Links & Socials (Cols 1-3)         */}
             {/* ---------------------------------------------------- */}
@@ -96,7 +96,7 @@ export default function Footer() {
               {/* Share Us Social Icons (Real SVG Icons, Not Letters) */}
               <div className="mt-8 pt-4 border-t border-emerald-800/60">
                 <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-wider block mb-2.5">
-                  Share Us:
+                  Follow Us
                 </span>
                 <div className="flex items-center gap-2.5">
                   {/* Facebook Icon */}
@@ -127,7 +127,7 @@ export default function Footer() {
 
                   {/* WhatsApp Icon */}
                   <a
-                    href="https://wa.me/919422000000"
+                    href="https://wa.me/917942637905"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
@@ -154,48 +154,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* ---------------------------------------------------- */}
-            {/* COLUMN 2: Get Updates Newsletter (Center Column)    */}
-            {/* ---------------------------------------------------- */}
-            <div className="lg:col-span-4 lg:px-8 lg:border-l lg:border-emerald-800/60 flex flex-col justify-start">
-              <div className="text-center lg:text-left">
-                <h3 className="font-editorial text-2xl sm:text-3xl text-emerald-50 mb-1">
-                  Get Updates
-                </h3>
-                <p className="font-editorial italic text-emerald-200/90 text-sm sm:text-base leading-snug mb-5">
-                  Subscribe to our nursery catalog to receive seasonal grafting updates and special announcements.
-                </p>
-
-                {subscribed ? (
-                  <div className="p-3.5 rounded-xl bg-emerald-900/80 border border-emerald-500/60 text-emerald-200 text-xs flex items-center gap-2">
-                    <CheckCircleIcon className="w-5 h-5 text-emerald-400 shrink-0" />
-                    <span>Thank you! You are subscribed to Satyasai Navkisan nursery announcements.</span>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubscribe} className="space-y-2.5">
-                   
-
-                    {/* *First Name Input + SIGN UP Button (as in reference) */}
-                    <div className="flex gap-2">
-                      <input
-                        type="email"
-                        required
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="flex-1 px-3.5 py-2.5 rounded-lg bg-emerald-950/60 border border-emerald-700/70 text-emerald-50 placeholder-emerald-300/60 text-xs focus:outline-none focus:border-emerald-400 transition-colors"
-                      />
-                      <button
-                        type="submit"
-                        className="px-5 py-2.5 rounded-lg bg-[#faf6ec] hover:bg-white text-stone-900 font-semibold text-xs tracking-wider uppercase transition-all shadow-sm active:scale-95 shrink-0"
-                      >
-                        SIGN UP
-                      </button>
-                    </div>
-                  </form>
-                )}
-              </div>
-            </div>
+       
 
             {/* ---------------------------------------------------- */}
             {/* COLUMN 3: Products & Services (Cols 7-9)            */}
@@ -209,7 +168,7 @@ export default function Footer() {
                   className="hover:underline flex items-center gap-1"
                 >
                   <span>Products & Services</span>
-                  <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" />
+                  {/* <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" /> */}
                 </a>
               </h4>
               <ul className="space-y-2 text-xs text-emerald-100/90 font-medium">
@@ -301,7 +260,7 @@ export default function Footer() {
                     className="text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1"
                   >
                     <span>View All Products</span>
-                   
+
                   </a>
                 </li>
               </ul>
@@ -322,13 +281,19 @@ export default function Footer() {
                   {/* <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" /> */}
                 </a>
 
-                {/* Direct Phone Number */}
-                <div className="mb-4">
+                {/* Direct Phone Number & Email */}
+                <div className="mb-4 space-y-1">
                   <a
-                    href="tel:+919422000000"
+                    href="tel:07942637905"
                     className="text-base font-medium text-emerald-100 hover:text-white transition-colors block"
                   >
-                    +91 94220 00000
+                    07942637905
+                  </a>
+                  <a
+                    href="mailto:navikisan@gmail.com"
+                    className="text-xs font-medium text-emerald-200/90 hover:text-white transition-colors block"
+                  >
+                    navikisan@gmail.com
                   </a>
                 </div>
 
@@ -344,7 +309,7 @@ export default function Footer() {
                 </div>
               </div>
 
-       
+
             </div>
 
           </div>
@@ -352,30 +317,26 @@ export default function Footer() {
       </div>
 
       {/* 3. Deep Dark Green Bottom Copyright Bar (Matching Reference Image) */}
-      <div className="bg-[#142e20] text-emerald-300/80 text-[11px] py-4 px-4 sm:px-6 border-t border-emerald-900/60">
+      <div className="bg-[#142e20] text-emerald-300/80 text-[11px] pt-4 pb-24 md:pb-4 px-4 sm:px-6 border-t border-emerald-900/60">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-center sm:text-left">
-            © 2026 Satyasai Navkisan Green India Private Limited. All Rights Reserved 
+            © 2026 Satyasai Navkisan Green India Private Limited. All Rights Reserved
           </p>
 
           <div className="flex items-center gap-4 text-emerald-400/70">
-            <a
-              href="https://www.saigreenindia.in/sitemap.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/terms"
               className="hover:text-emerald-200 transition-colors"
             >
-            Terms of Use
-            </a>
+              Terms of Use
+            </Link>
             <span>•</span>
-            <a
-              href="https://www.indiamart.com/terms-of-use.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/privacy"
               className="hover:text-emerald-200 transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -95,14 +95,7 @@ export default function AboutPage() {
               </h1>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:max-w-xs text-xs sm:text-sm text-stone-600 leading-relaxed font-normal border-l-2 border-emerald-800/40 pl-4"
-            >
-              Satyasai Navkisan Green India Private Limited is dedicated to supplying certified, bio-hardened fruit and timber saplings with unmatched genetic fidelity.
-            </motion.div>
+           
           </div>
         </div>
       </div>
@@ -117,7 +110,7 @@ export default function AboutPage() {
           <div className="max-w-3xl mb-12 sm:mb-16">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 text-xs font-bold uppercase tracking-wider mb-3 border border-emerald-200">
               <SparklesIcon className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Company Profile & Track Record</span>
+              <span>Company Profile </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-stone-950 font-normal tracking-tight leading-[1.15]">
               About The <span className="italic font-serif">Company</span>
@@ -231,16 +224,12 @@ export default function AboutPage() {
               <div className="p-7 sm:p-9 rounded-[2.5rem] bg-[#fafaf9] border border-stone-200/90 shadow-sm">
                 <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-200">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-900">
-                      Statutory & Corporate Credentials
-                    </span>
+                 
                     <h3 className="text-2xl font-editorial font-bold text-stone-950 tracking-tight mt-0.5">
                       Basic Information
                     </h3>
                   </div>
-                  <div className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-950 text-xs font-bold border border-emerald-200">
-                    Trustseal Verified
-                  </div>
+               
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -414,25 +403,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Certificate Details Capsule */}
-                <div className="mt-5 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 space-y-2 text-xs text-stone-200">
-                  <div className="flex justify-between">
-                    <span className="text-stone-400">Standard:</span>
-                    <span className="font-bold text-amber-300">ISO 9001:2015 QMS</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-stone-400">Issuing Body:</span>
-                    <span className="font-medium text-white">Magnitude Management Services</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-stone-400">Accreditations:</span>
-                    <span className="font-medium text-emerald-300">MMS • EGAC • IAF Member</span>
-                  </div>
-                  <div className="flex justify-between border-t border-white/10 pt-1.5">
-                    <span className="text-stone-400">Registration Period:</span>
-                    <span className="font-mono text-white">02/08/2022 to 01/08/2025</span>
-                  </div>
-                </div>
+           
               </motion.div>
             </div>
           </div>
@@ -465,12 +436,10 @@ export default function AboutPage() {
                   src="/images/greenhouse-hero.jpg"
                   alt="Satyasai Navkisan Automated Greenhouse in Lucknow"
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover"
+                 
+                  className=""
                 />
-                <div className="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-full bg-stone-950/80 backdrop-blur-md text-white text-[10.5px] font-medium">
-                  Automated Polyhouses
-                </div>
+              
               </motion.div>
 
               <motion.div
@@ -570,7 +539,7 @@ export default function AboutPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white text-xs sm:text-sm font-semibold tracking-tight shadow-md hover:shadow-xl transition-all cursor-pointer"
                 >
-                  <span>Inquire with Agronomist</span>
+                  <span>Contact Us</span>
                   <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" />
                 </Link>
 
@@ -581,7 +550,7 @@ export default function AboutPage() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs sm:text-sm font-semibold tracking-tight transition-all"
                 >
                   <MapPinIcon className="w-4 h-4 text-emerald-700" />
-                  <span>Visit Lucknow Polyhouses</span>
+                  <span>Visit Office</span>
                 </a>
               </div>
             </motion.div>
@@ -649,10 +618,7 @@ export default function AboutPage() {
                 />
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/10 text-xs text-stone-300 flex flex-wrap items-center justify-between gap-2">
-                <span>Scope: Selling Teak Plants & Horticultural Plants Supplying</span>
-                <span className="font-mono text-emerald-400 font-semibold">Valid through 01/08/2025</span>
-              </div>
+             
             </motion.div>
           </div>
         )}

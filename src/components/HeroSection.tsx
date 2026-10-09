@@ -119,7 +119,7 @@ export default function HeroSection({
         {/* Big Editorial Headline */}
         <div
           onClick={handleNextHeadline}
-          className="group cursor-pointer transition-transform duration-300 active:scale-[0.99]"
+          className="group cursor-pointer transition-transform duration-300 active:scale-[0.99] mt-12"
         >
           <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.4rem] leading-[1.05] tracking-[-0.03em] text-stone-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)] transition-all duration-300">
             {currentHeadline.prefix}{" "}
@@ -158,21 +158,10 @@ export default function HeroSection({
       {/* 3. Bottom Right Floating Controls */}
       <div className="absolute bottom-5 sm:bottom-8 right-4 sm:right-8 z-30 flex flex-col gap-2.5">
         {/* Expand / Minimize Fullscreen Toggle */}
-        <button
-          onClick={() => setIsFullscreen(!isFullscreen)}
-          aria-label={isFullscreen ? "Exit Fullscreen" : "Expand Fullscreen View"}
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/75 backdrop-blur-xl border border-white/70 flex items-center justify-center text-stone-850 hover:text-stone-950 hover:bg-white shadow-xl transition-all active:scale-95 group"
-          title="Toggle Fullscreen"
-        >
-          {isFullscreen ? (
-            <ArrowsPointingInIcon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
-          ) : (
-            <ArrowsPointingOutIcon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
-          )}
-        </button>
+       
 
         {/* Scene Switcher */}
-        <button
+        {/* <button
           onClick={() =>
             setBackgroundScene(
               backgroundScene === "greenhouse" ? "estate" : "greenhouse"
@@ -187,10 +176,10 @@ export default function HeroSection({
           }
         >
           <Square2StackIcon className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-800 group-hover:scale-110 transition-transform" />
-        </button>
+        </button> */}
 
         {/* Atmosphere Time of Day Toggle */}
-        <button
+        {/* <button
           onClick={() => {
             if (lightingMode === "day") setLightingMode("golden");
             else if (lightingMode === "golden") setLightingMode("dusk");
@@ -209,7 +198,7 @@ export default function HeroSection({
           {lightingMode === "dusk" && (
             <MoonIcon className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500 group-hover:-rotate-12 transition-transform" />
           )}
-        </button>
+        </button> */}
       </div>
 
     

@@ -3,23 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
-  ArrowUpRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  XMarkIcon,
-  MapPinIcon,
-  ShieldCheckIcon,
-  CheckCircleIcon,
-  CalendarIcon,
-  PhoneIcon,
-  HandThumbUpIcon,
-  SparklesIcon,
-  BuildingStorefrontIcon,
 } from "@heroicons/react/24/outline";
 import {
   StarIcon as StarSolid,
-  CheckBadgeIcon,
-  HandThumbUpIcon as HandThumbUpSolid,
 } from "@heroicons/react/24/solid";
 
 interface ReviewSection {
@@ -440,9 +428,6 @@ const TESTIMONIALS: Testimonial[] = [
 
 export default function TestimonialsSection() {
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedReview, setSelectedReview] = useState<Testimonial | null>(null);
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
-  const [helpfulVoted, setHelpfulVoted] = useState<Record<string, boolean>>({});
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Auto-sliding animation by default
@@ -454,7 +439,7 @@ export default function TestimonialsSection() {
     const speed = 0.75;
 
     const step = () => {
-      if (!isPaused && !selectedReview && el) {
+      if (!isPaused && el) {
         el.scrollLeft += speed;
         if (el.scrollLeft >= el.scrollWidth / 2) {
           el.scrollLeft = 0;
@@ -465,30 +450,7 @@ export default function TestimonialsSection() {
 
     animationFrameId = requestAnimationFrame(step);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused, selectedReview]);
-
-  // Lock body scroll and listen for keyboard navigation when modal is open
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedReview) return;
-      if (e.key === "Escape") {
-        setSelectedReview(null);
-      } else if (e.key === "ArrowLeft") {
-        handlePrevReview();
-      } else if (e.key === "ArrowRight") {
-        handleNextReview();
-      }
-    };
-
-    if (selectedReview) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedReview]);
+  }, [isPaused]);
 
   const handleManualScroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -497,34 +459,6 @@ export default function TestimonialsSection() {
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
-  };
-
-  const handleOpenReview = (item: Testimonial) => {
-    setSelectedReview(item);
-    setSelectedPhotoIndex(0);
-  };
-
-  const handlePrevReview = () => {
-    if (!selectedReview) return;
-    const currentIndex = TESTIMONIALS.findIndex((t) => t.id === selectedReview.id);
-    const prevIndex = (currentIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length;
-    setSelectedReview(TESTIMONIALS[prevIndex]);
-    setSelectedPhotoIndex(0);
-  };
-
-  const handleNextReview = () => {
-    if (!selectedReview) return;
-    const currentIndex = TESTIMONIALS.findIndex((t) => t.id === selectedReview.id);
-    const nextIndex = (currentIndex + 1) % TESTIMONIALS.length;
-    setSelectedReview(TESTIMONIALS[nextIndex]);
-    setSelectedPhotoIndex(0);
-  };
-
-  const handleToggleHelpful = (id: string) => {
-    setHelpfulVoted((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
   };
 
   // Double items for seamless infinite marquee gliding
@@ -537,14 +471,13 @@ export default function TestimonialsSection() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100/80 text-emerald-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5 border border-emerald-200">
               <StarSolid className="w-3 h-3 text-amber-500" />
-              <span>Verified Grower Reviews • Lucknow & Uttar Pradesh</span>
+              <span>Verified Reviews </span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-editorial text-stone-950 font-normal tracking-tight">
               Cultivating Success, <span className="italic font-normal text-emerald-950">Grower by Grower.</span>
             </h2>
             <p className="text-xs text-stone-600 mt-1 max-w-xl font-normal leading-relaxed">
-              Tap the arrow on any grower card to inspect full harvest verification, survival metrics, and verified feedback.
-            </p>
+Real stories and honest reviews from farmers who trust us.            </p>
           </div>
 
           {/* Compact Manual Navigation Chevrons */}
@@ -593,10 +526,9 @@ export default function TestimonialsSection() {
           {displayItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              onClick={() => handleOpenReview(item)}
-              className="group relative w-[210px] sm:w-[230px] md:w-[245px] shrink-0 rounded-2xl bg-white border border-stone-200/90 p-2.5 sm:p-3  transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group relative w-[210px] sm:w-[230px] md:w-[245px] shrink-0 rounded-2xl bg-white border border-stone-200/90 p-2.5 sm:p-3 transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Top: Compact Portrait Photo in Rounded Frame with Action Arrow */}
+              {/* Top: Compact Portrait Photo in Rounded Frame */}
               <div className="relative w-full aspect-[4/4.5] rounded-xl overflow-hidden bg-stone-100 mb-2.5">
                 <Image
                   src={item.image}
@@ -606,42 +538,25 @@ export default function TestimonialsSection() {
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
 
-                {/* Top Right Floating Arrow Button (Matches User Reference Image) */}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleOpenReview(item);
-                  }}
-                  aria-label={`Read full review from ${item.name}`}
-                  title="Click to view full review in modal"
-                  className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/80 shadow-md flex items-center justify-center text-stone-900 group-hover:bg-emerald-950 group-hover:text-white transition-all duration-200 hover:scale-110 active:scale-95 z-10"
-                >
-                  <ArrowUpRightIcon className="w-4 h-4 stroke-[2.5]" />
-                </button>
-
                 {/* Compact Plantation Acreage Chip */}
-                <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-stone-950/75 backdrop-blur-md text-white text-[9px] font-medium tracking-wide">
+                {/* <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-stone-950/75 backdrop-blur-md text-white text-[9px] font-medium tracking-wide">
                   {item.acres} • {item.variety}
-                </div>
+                </div> */}
               </div>
 
-              {/* Middle: Name, Role & Lucknow Location */}
+              {/* Middle: Name & Location */}
               <div className="px-0.5">
                 <h3 className="font-sans font-bold text-xs sm:text-[13px] text-stone-950 tracking-tight uppercase truncate">
                   {item.name}
                 </h3>
-                <p className="text-[10px] text-stone-500 font-medium mt-0.5 truncate">
-                  {item.role} — <span className="text-emerald-900 font-semibold">{item.location}</span>
+                <p className="text-[10px] text-emerald-900 font-semibold mt-0.5 truncate">
+                  {item.location}
                 </p>
 
-                {/* Compact Rating Line ("5.0 / 29 REVIEWS") */}
+                {/* Compact Rating Line */}
                 <div className="mt-2 flex items-baseline gap-1 border-t border-stone-100 pt-2">
                   <span className="text-lg sm:text-xl font-bold font-sans text-stone-950 tracking-tight">
                     {item.rating}
-                  </span>
-                  <span className="text-[8.5px] font-semibold text-stone-400 uppercase tracking-wider">
-                    / {item.reviewsCount}
                   </span>
                   <div className="ml-auto flex items-center text-amber-500 gap-0.5">
                     <StarSolid className="w-2.5 h-2.5" />
@@ -652,9 +567,9 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
 
-                {/* Bottom: Review Quote */}
+                {/* Bottom: Review Quote (Without quotation marks) */}
                 <p className="mt-1.5 text-[11px] text-stone-600 leading-snug font-normal line-clamp-2">
-                  &ldquo;{item.quote}&rdquo;
+                  {item.quote}
                 </p>
 
               </div>
@@ -662,365 +577,6 @@ export default function TestimonialsSection() {
           ))}
         </div>
       </div>
-
-      {/* ========================================================================= */}
-      {/* DETAILED PROPER REVIEW MODAL (Triggered on Arrow Click)                   */}
-      {/* ========================================================================= */}
-      {selectedReview && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 md:p-6 animate-in fade-in duration-200 select-text"
-        >
-          {/* Dark Glassmorphic Backdrop */}
-          <div
-            onClick={() => setSelectedReview(null)}
-            className="fixed inset-0 bg-stone-950/75 backdrop-blur-md transition-opacity"
-          />
-
-          {/* Modal Container */}
-          <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#fbfbfa] border border-stone-200 shadow-2xl text-stone-900 z-10 flex flex-col">
-            {/* Sticky Header with Navigation & Close */}
-            <div className="sticky top-0 z-20 flex items-center justify-between px-5 sm:px-7 py-3.5 bg-white/95 backdrop-blur-md border-b border-stone-200">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-[10.5px] font-bold uppercase tracking-wider border border-emerald-200">
-                  <CheckBadgeIcon className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>Verified Customer Review</span>
-                </span>
-                <span className="hidden sm:inline text-xs text-stone-400">•</span>
-                <span className="hidden sm:inline text-xs text-stone-500 font-medium">
-                  {selectedReview.orderId}
-                </span>
-              </div>
-
-              {/* Prev / Next & Close Action Controls */}
-              <div className="flex items-center gap-2">
-                <div className="flex items-center border border-stone-200 rounded-full bg-stone-50 p-0.5">
-                  <button
-                    onClick={handlePrevReview}
-                    title="Previous Review (Left Arrow)"
-                    className="p-1.5 rounded-full hover:bg-stone-200 text-stone-600 hover:text-stone-950 transition-colors"
-                  >
-                    <ChevronLeftIcon className="w-4 h-4" />
-                  </button>
-                  <span className="text-[11px] font-semibold text-stone-500 px-1">
-                    {TESTIMONIALS.findIndex((t) => t.id === selectedReview.id) + 1} / {TESTIMONIALS.length}
-                  </span>
-                  <button
-                    onClick={handleNextReview}
-                    title="Next Review (Right Arrow)"
-                    className="p-1.5 rounded-full hover:bg-stone-200 text-stone-600 hover:text-stone-950 transition-colors"
-                  >
-                    <ChevronRightIcon className="w-4 h-4" />
-                  </button>
-                </div>
-
-                <button
-                  onClick={() => setSelectedReview(null)}
-                  aria-label="Close review modal"
-                  className="p-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors"
-                >
-                  <XMarkIcon className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Scrollable Content Body */}
-            <div className="p-5 sm:p-7 md:p-8 space-y-6">
-              {/* Reviewer Profile Section */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-5 border-b border-stone-200">
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-stone-100 shrink-0 border border-stone-200 shadow-sm">
-                  <Image
-                    src={selectedReview.image}
-                    alt={selectedReview.name}
-                    fill
-                    sizes="80px"
-                    className="object-cover object-top"
-                  />
-                  <div className="absolute bottom-1 right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" title="Verified Customer" />
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <h3 className="text-xl sm:text-2xl font-bold font-sans text-stone-950 tracking-tight">
-                      {selectedReview.name}
-                    </h3>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                      <ShieldCheckIcon className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>{selectedReview.verificationBadge}</span>
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-stone-600">
-                    <span className="font-semibold text-emerald-950 flex items-center gap-1">
-                      <MapPinIcon className="w-3.5 h-3.5 text-emerald-700" />
-                      {selectedReview.location}
-                    </span>
-                    <span>•</span>
-                    <span className="text-stone-700 font-medium">{selectedReview.role}</span>
-                    <span>•</span>
-                    <span className="text-stone-500 flex items-center gap-1">
-                      <CalendarIcon className="w-3 h-3 text-stone-400" />
-                      {selectedReview.reviewDate}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Overall Big Rating Score */}
-                <div className="sm:self-center shrink-0 p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200 text-center min-w-[110px] shadow-xs">
-                  <div className="flex items-center justify-center gap-1 text-2xl sm:text-3xl font-bold text-stone-950 font-sans tracking-tight">
-                    <span>{selectedReview.rating}</span>
-                    <StarSolid className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500" />
-                  </div>
-                  <div className="flex items-center justify-center gap-0.5 mt-0.5 text-amber-500">
-                    <StarSolid className="w-3 h-3" />
-                    <StarSolid className="w-3 h-3" />
-                    <StarSolid className="w-3 h-3" />
-                    <StarSolid className="w-3 h-3" />
-                    <StarSolid className="w-3 h-3" />
-                  </div>
-                  <div className="text-[10px] font-bold text-stone-400 mt-1 uppercase tracking-wider">
-                    {selectedReview.reviewsCount}
-                  </div>
-                </div>
-              </div>
-
-              {/* Verified Order Specification Matrix */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 rounded-2xl bg-stone-100/80 border border-stone-200 text-xs">
-                <div>
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Variety Ordered</span>
-                  <span className="font-bold text-stone-950 mt-0.5 block">{selectedReview.variety}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Plantation Size</span>
-                  <span className="font-bold text-stone-950 mt-0.5 block">{selectedReview.acres} ({selectedReview.quantity})</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Field Survival</span>
-                  <span className="font-bold text-emerald-800 mt-0.5 block">{selectedReview.survivalRate}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Harvest Milestone</span>
-                  <span className="font-bold text-stone-950 mt-0.5 block truncate">{selectedReview.harvestMetric}</span>
-                </div>
-              </div>
-
-              {/* Performance Rating Progress Bars */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
-                <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                  <SparklesIcon className="w-4 h-4 text-emerald-700" />
-                  <span>Verified Performance Scorecard</span>
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-xs">
-                  <div>
-                    <div className="flex justify-between items-center mb-1 text-stone-700 font-medium">
-                      <span>Rootstock & Graft Health</span>
-                      <span className="font-bold text-stone-950">{selectedReview.ratingsBreakdown.rootstock.toFixed(1)} / 5.0</span>
-                    </div>
-                    <div className="w-full h-2 rounded-full bg-stone-100 overflow-hidden">
-                      <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${(selectedReview.ratingsBreakdown.rootstock / 5) * 100}%` }} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1 text-stone-700 font-medium">
-                      <span>Transit & Farm Delivery Condition</span>
-                      <span className="font-bold text-stone-950">{selectedReview.ratingsBreakdown.transit.toFixed(1)} / 5.0</span>
-                    </div>
-                    <div className="w-full h-2 rounded-full bg-stone-100 overflow-hidden">
-                      <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${(selectedReview.ratingsBreakdown.transit / 5) * 100}%` }} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1 text-stone-700 font-medium">
-                      <span>Field Survival in Lucknow Soil</span>
-                      <span className="font-bold text-stone-950">{selectedReview.ratingsBreakdown.survival.toFixed(1)} / 5.0</span>
-                    </div>
-                    <div className="w-full h-2 rounded-full bg-stone-100 overflow-hidden">
-                      <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${(selectedReview.ratingsBreakdown.survival / 5) * 100}%` }} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1 text-stone-700 font-medium">
-                      <span>Agronomist Guidance & Support</span>
-                      <span className="font-bold text-stone-950">{selectedReview.ratingsBreakdown.support.toFixed(1)} / 5.0</span>
-                    </div>
-                    <div className="w-full h-2 rounded-full bg-stone-100 overflow-hidden">
-                      <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${(selectedReview.ratingsBreakdown.support / 5) * 100}%` }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Full In-Depth Proper Review Content */}
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-lg sm:text-xl font-bold font-editorial text-stone-950 tracking-tight leading-snug">
-                    &ldquo;{selectedReview.reviewTitle}&rdquo;
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {selectedReview.highlights.map((badge, idx) => (
-                      <span
-                        key={idx}
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-800 text-[11px] font-medium border border-stone-200"
-                      >
-                        <CheckCircleIcon className="w-3.5 h-3.5 text-emerald-700" />
-                        <span>{badge}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Structured Review Paragraphs */}
-                <div className="space-y-3.5 text-xs sm:text-[13px] text-stone-700 leading-relaxed font-normal">
-                  {selectedReview.detailedSections.map((section, idx) => (
-                    <div key={idx} className="p-3.5 sm:p-4 rounded-xl bg-white border border-stone-200/80 shadow-2xs">
-                      <h5 className="font-bold text-stone-950 mb-1.5 text-xs sm:text-[13px] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
-                        {section.title}
-                      </h5>
-                      <p className="text-stone-600 leading-relaxed">{section.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Verified Field Inspection Photos Gallery */}
-              {selectedReview.gallery && selectedReview.gallery.length > 0 && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider flex items-center gap-1.5">
-                      <BuildingStorefrontIcon className="w-4 h-4 text-emerald-700" />
-                      <span>Verified Field & Plantation Photos</span>
-                    </h4>
-                    <span className="text-[11px] text-stone-400 font-medium">
-                      {selectedPhotoIndex + 1} of {selectedReview.gallery.length}
-                    </span>
-                  </div>
-
-                  {/* Main Active Photo Preview */}
-                  <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 mb-3">
-                    <Image
-                      src={selectedReview.gallery[selectedPhotoIndex].src}
-                      alt={selectedReview.gallery[selectedPhotoIndex].caption}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 768px"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/80 via-stone-950/40 to-transparent p-3 text-white text-xs">
-                      <p className="font-medium line-clamp-1">
-                        {selectedReview.gallery[selectedPhotoIndex].caption}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Thumbnails */}
-                  <div className="grid grid-cols-3 gap-2">
-                    {selectedReview.gallery.map((photo, pIdx) => (
-                      <button
-                        key={pIdx}
-                        type="button"
-                        onClick={() => setSelectedPhotoIndex(pIdx)}
-                        className={`relative aspect-[16/10] rounded-lg overflow-hidden border-2 transition-all ${selectedPhotoIndex === pIdx
-                            ? "border-emerald-700 ring-2 ring-emerald-500/30 scale-[1.02]"
-                            : "border-stone-200 hover:border-stone-400 opacity-70 hover:opacity-100"
-                          }`}
-                      >
-                        <Image
-                          src={photo.src}
-                          alt={photo.caption}
-                          fill
-                          sizes="150px"
-                          className="object-cover"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Official Nursery Response */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border-l-4 border-l-emerald-700 border border-emerald-200/80">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-950">
-                    <CheckBadgeIcon className="w-4 h-4 text-emerald-700" />
-                    <span>Official Response from Satyasai Navkisan Agronomy Desk</span>
-                  </div>
-                  <span className="text-[10px] text-emerald-800 font-medium">
-                    {selectedReview.nurseryResponse.date}
-                  </span>
-                </div>
-                <p className="text-xs text-stone-700 leading-relaxed font-normal italic">
-                  &ldquo;{selectedReview.nurseryResponse.text}&rdquo;
-                </p>
-                <div className="mt-2 text-[10px] font-bold text-emerald-900 uppercase tracking-wide">
-                  — {selectedReview.nurseryResponse.author}, {selectedReview.nurseryResponse.role}
-                </div>
-              </div>
-
-              {/* Community Helpful Bar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-stone-200 text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="text-stone-500">Was this verified review helpful?</span>
-                  <button
-                    onClick={() => handleToggleHelpful(selectedReview.id)}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold transition-all ${helpfulVoted[selectedReview.id]
-                        ? "bg-emerald-950 text-white border-emerald-950 shadow-xs"
-                        : "bg-white text-stone-700 border-stone-300 hover:bg-stone-50"
-                      }`}
-                  >
-                    {helpfulVoted[selectedReview.id] ? (
-                      <HandThumbUpSolid className="w-3.5 h-3.5 text-emerald-400" />
-                    ) : (
-                      <HandThumbUpIcon className="w-3.5 h-3.5 text-stone-500" />
-                    )}
-                    <span>Helpful ({selectedReview.helpfulCount + (helpfulVoted[selectedReview.id] ? 1 : 0)})</span>
-                  </button>
-                </div>
-
-                <div className="text-[11px] text-stone-400 font-medium">
-                  Verified Order #{selectedReview.orderId} • Lucknow Mandi Network
-                </div>
-              </div>
-            </div>
-
-            {/* Sticky Action Footer */}
-            <div className="sticky bottom-0 z-20 flex flex-col sm:flex-row items-center justify-between gap-3 p-4 sm:p-5 bg-white/95 backdrop-blur-md border-t border-stone-200">
-              <div className="text-xs text-stone-600 hidden sm:block">
-                Interested in planting <strong className="text-stone-950">{selectedReview.variety}</strong>?
-              </div>
-
-              <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                <a
-                  href={`https://wa.me/919422000000?text=Hello%20Satyasai%20Navkisan%20Green%20India,%20I%20am%20interested%20in%20${encodeURIComponent(
-                    selectedReview.variety
-                  )}%20after%20reading%20the%20verified%20review%20from%20${encodeURIComponent(
-                    selectedReview.name
-                  )}%20(${encodeURIComponent(
-                    selectedReview.location
-                  )}).%20Please%20share%20booking%20and%20pricing%20details.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none py-2.5 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/20 transition-all text-center"
-                >
-                  <span>Inquire on WhatsApp</span>
-                  <span className="text-emerald-400">→</span>
-                </a>
-
-                <a
-                  href="tel:+919422000000"
-                  className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors text-center"
-                >
-                  <PhoneIcon className="w-3.5 h-3.5 text-emerald-800" />
-                  <span>Call Lucknow Desk</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

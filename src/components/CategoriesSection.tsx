@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CATEGORIES_LIST,
   PRODUCTS_BY_CATEGORY,
@@ -15,6 +16,7 @@ import {
   MinusIcon,
   TrashIcon,
   ArrowTopRightOnSquareIcon,
+  ArrowRightIcon,
   CheckIcon,
   XMarkIcon,
   UserIcon,
@@ -130,7 +132,7 @@ export default function CategoriesSection() {
   const totalCartItems = cart.reduce((acc, item) => acc + item.cartQuantity, 0);
   const totalCartAmount = cart.reduce((acc, item) => acc + item.price * item.cartQuantity, 0);
 
-  // Generate WhatsApp Order Message targeting 9412742566
+  // Generate WhatsApp Order Message targeting 07942637905
   const handleConfirmOrderWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -151,7 +153,7 @@ export default function CategoriesSection() {
       "en-IN"
     )} (${totalCartItems} total plants/units)\n🌱 *Delivery Mode:* Direct Nursery Dispatch / Farm Gate Delivery in UP\n\nPlease confirm sapling availability, dispatch timeline, and advance invoice details.`;
 
-    const whatsappUrl = `https://wa.me/919412742566?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/917942637905?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -206,12 +208,12 @@ export default function CategoriesSection() {
         </div>
 
         {/* ========================================================================= */}
-        {/* 1. MODERN CIRCULAR CATEGORIES REEL (Matching User Reference Image)        */}
+        {/* 1. MODERN CIRCULAR CATEGORIES REEL (Clean & Responsive, No Clipping)      */}
         {/* ========================================================================= */}
-        <div className="relative w-full py-3 mb-8">
+        <div className="relative w-full py-2 mb-8">
           <div
             ref={categoryScrollRef}
-            className="flex items-start gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none pb-2 pt-1 px-1"
+            className="flex items-start gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-3 px-2.5"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -227,12 +229,12 @@ export default function CategoriesSection() {
                   onClick={() => setActiveCategory(cat.id)}
                   className="group flex flex-col items-center shrink-0 focus:outline-hidden transition-all duration-300 cursor-pointer"
                 >
-                  {/* Modern Circular Image Frame */}
+                  {/* Modern Circular Image Frame - Full Unclipped Circle */}
                   <div
                     className={`relative w-18 h-18 sm:w-20 sm:h-20 md:w-22 md:h-22 rounded-full p-1 transition-all duration-300 ${
                       isActive
-                        ? "ring-[2.5px] ring-emerald-800 ring-offset-2 ring-offset-[#fafaf9] shadow-lg shadow-emerald-950/20 scale-105"
-                        : "ring-1.5 ring-stone-200/90 ring-offset-2 ring-offset-[#fafaf9] hover:ring-emerald-600/70 hover:scale-105 shadow-2xs hover:shadow-md"
+                        ? "ring-[2.5px] ring-emerald-800 ring-offset-2 ring-offset-[#fafaf9] shadow-md shadow-emerald-950/20"
+                        : "ring-1.5 ring-stone-200/90 ring-offset-2 ring-offset-[#fafaf9] hover:ring-emerald-600/70 shadow-2xs hover:shadow-xs"
                     }`}
                   >
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-stone-100">
@@ -241,7 +243,7 @@ export default function CategoriesSection() {
                         alt={cat.name}
                         fill
                         sizes="(max-width: 768px) 80px, 90px"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
 
                       {/* Active Radial Indicator */}
@@ -250,18 +252,18 @@ export default function CategoriesSection() {
                       )}
                     </div>
 
-                    {/* Active Corner Check Badge */}
+                    {/* Active Corner Check Badge - Only Indicator */}
                     {isActive && (
-                      <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-emerald-900 text-white flex items-center justify-center shadow-xs border-2 border-white">
-                        <CheckIcon className="w-3 h-3 stroke-[3]" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-900 text-white flex items-center justify-center shadow-md border-2 border-white z-10 animate-in fade-in zoom-in-75 duration-200">
+                        <CheckIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[3]" />
                       </div>
                     )}
                   </div>
 
-                  {/* Category Title Below Circle (Matching Reference Image) */}
-                  <div className="mt-2.5 text-center flex flex-col items-center">
+                  {/* Category Title Below Circle - Clean without underline */}
+                  <div className="mt-2.5 text-center">
                     <span
-                      className={`text-xs sm:text-[13px] tracking-tight leading-tight line-clamp-2 max-w-[85px] sm:max-w-[95px] transition-colors ${
+                      className={`text-xs sm:text-[13px] tracking-tight leading-tight line-clamp-2 max-w-[85px] sm:max-w-[95px] block transition-colors ${
                         isActive
                           ? "font-bold text-emerald-950"
                           : "font-medium text-stone-700 group-hover:text-stone-950"
@@ -269,13 +271,6 @@ export default function CategoriesSection() {
                     >
                       {cat.name}
                     </span>
-
-                    {/* Active Underline Pill */}
-                    {isActive ? (
-                      <span className="w-5 h-1 rounded-full bg-emerald-800 mt-1 animate-in fade-in zoom-in duration-200" />
-                    ) : (
-                      <span className="w-1.5 h-1 rounded-full bg-transparent mt-1 group-hover:bg-stone-300 transition-colors" />
-                    )}
                   </div>
                 </button>
               );
@@ -286,9 +281,7 @@ export default function CategoriesSection() {
         {/* Category Active Header Bar */}
         <div className="flex flex-wrap items-center justify-between pb-3.5 mb-6 border-b border-stone-200 gap-2">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-400">
-              Showing 3×3 Catalog:
-            </span>
+           
             <span className="text-sm font-bold text-stone-950">
               {currentCategoryInfo?.name} ({currentProducts.length} Verified Varieties)
             </span>
@@ -475,39 +468,66 @@ export default function CategoriesSection() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 3. FLOATING CART PILL (Appears when items are in cart)                     */}
+      {/* 3. FLOATING CART PILL (Appears above mobile bottom nav in middle)          */}
       {/* ========================================================================= */}
-      {cart.length > 0 && (
-        <aside aria-label="Nursery Cart Summary" className="fixed bottom-6 right-6 z-40 animate-in fade-in slide-in-from-bottom-4 duration-300">
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="flex items-center gap-3 py-3 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white shadow-2xl border border-emerald-800/50 hover:scale-105 active:scale-95 transition-all group"
+      <AnimatePresence>
+        {cart.length > 0 && (
+          <motion.aside
+            key="floating-cart-pill"
+            initial={{ y: 35, opacity: 0, scale: 0.85 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              scale: justAddedId ? 1.05 : 1,
+            }}
+            exit={{ y: 35, opacity: 0, scale: 0.85 }}
+            transition={{
+              type: "spring",
+              stiffness: 420,
+              damping: 26,
+            }}
+            aria-label="Nursery Cart Summary"
+            className="fixed z-50 bottom-[4.9rem] sm:bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-6 md:translate-x-0 max-w-[94vw]"
           >
-            <div className="relative">
-              <ShoppingCartIcon className="w-5 h-5 text-emerald-400 group-hover:rotate-6 transition-transform" />
-              <span className="absolute -top-1.5 -right-2 bg-amber-400 text-stone-950 font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center border-2 border-emerald-950">
-                {cart.length}
-              </span>
-            </div>
-
-            <div className="text-left">
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
-                Confirm Order
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center gap-2.5 sm:gap-3 py-2.5 px-4 sm:py-3 sm:px-5 rounded-full bg-emerald-950/95 hover:bg-emerald-900 text-white shadow-[0_14px_36px_rgba(6,78,59,0.5)] border border-emerald-700/60 hover:scale-105 active:scale-95 transition-all group backdrop-blur-xl cursor-pointer"
+            >
+              {/* Animated Shopping Cart Icon with Count Badge */}
+              <div className="relative flex items-center justify-center shrink-0">
+                <motion.div
+                  animate={justAddedId ? { rotate: [0, -12, 12, 0], scale: [1, 1.25, 1] } : {}}
+                  transition={{ duration: 0.35 }}
+                >
+                  <ShoppingCartIcon className="w-5 h-5 text-emerald-400 group-hover:rotate-6 transition-transform" />
+                </motion.div>
+                <span className="absolute -top-1.5 -right-2 bg-amber-400 text-stone-950 font-bold text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center border-2 border-emerald-950 shadow-xs">
+                  {cart.length}
+                </span>
               </div>
-              <div className="text-xs sm:text-sm font-bold tracking-tight">
-                {totalCartItems} Plants • ₹{totalCartAmount.toLocaleString("en-IN")}
-              </div>
-            </div>
 
-            <span className="ml-1 text-emerald-400 group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </button>
-        </aside>
-      )}
+              <div className="text-left flex items-center gap-2">
+                <div>
+                  <div className="text-[10px] font-semibold uppercase tracking-wider text-emerald-300 leading-none">
+                    Review Order
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold tracking-tight whitespace-nowrap mt-0.5">
+                    {totalCartItems} Plants • ₹{totalCartAmount.toLocaleString("en-IN")}
+                  </div>
+                </div>
+
+                <span className="ml-1 inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-950 bg-emerald-400 px-2.5 py-0.5 rounded-full shadow-2xs group-hover:bg-emerald-300 transition-colors whitespace-nowrap">
+                  <span>Cart</span>
+                  <ArrowRightIcon className="w-3 h-3 text-emerald-950 stroke-[2.5] group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </div>
+            </button>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
       {/* ========================================================================= */}
-      {/* 4. CART & CHECKOUT MODAL (WhatsApp Order to 9412742566)                   */}
+      {/* 4. CART & CHECKOUT MODAL (WhatsApp Order to 07942637905)                   */}
       {/* ========================================================================= */}
       {isCartOpen && (
         <div
@@ -727,19 +747,19 @@ export default function CategoriesSection() {
                       </div>
                     </div>
 
-                    {/* CONFIRM ORDER ON WHATSAPP BUTTON (9412742566) */}
+                    {/* CONFIRM ORDER ON WHATSAPP BUTTON (07942637905) */}
                     <div className="pt-3">
-                      <button
+                       <button
                         type="submit"
                         className="w-full py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm tracking-tight flex items-center justify-center gap-2.5 shadow-lg shadow-[#25D366]/25 transition-all hover:scale-[1.01] active:scale-95 cursor-pointer"
                       >
                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                         </svg>
-                        <span>Confirm Your Order via WhatsApp (9412742566)</span>
+                        <span>Confirm Your Order via WhatsApp </span>
                       </button>
                       <p className="text-[11px] text-center text-stone-500 mt-2">
-                        A detailed order summary will be sent directly to Satyasai Navkisan Nursery Desk (+91 9412742566).
+                        A detailed order summary will be sent directly to Satyasai Navkisan Nursery Desk.
                       </p>
                     </div>
                   </form>

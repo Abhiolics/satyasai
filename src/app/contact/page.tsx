@@ -64,7 +64,7 @@ export default function ContactPage() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("abiolics@gmail.com");
+    navigator.clipboard.writeText("navikisan@gmail.com");
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
@@ -98,7 +98,7 @@ export default function ContactPage() {
       const error = err as Error;
       setErrorMsg(
         error.message ||
-          "There was an error routing your request. Please reach us directly at abiolics@gmail.com."
+          "There was an error routing your request. Please reach us directly at navikisan@gmail.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -110,9 +110,9 @@ export default function ContactPage() {
       `Plantation Requirement from ${formData.name || "Customer"}`
     );
     const body = encodeURIComponent(
-      `Name: ${formData.name || "N/A"}\nNumber: ${formData.number || "N/A"}\nEmail: ${formData.email || "N/A"}\n\nRequirement:\n${formData.requirement || "Please contact me regarding saplings."}\n\nRouted to: abiolics@gmail.com`
+      `Name: ${formData.name || "N/A"}\nNumber: ${formData.number || "N/A"}\nEmail: ${formData.email || "N/A"}\n\nRequirement:\n${formData.requirement || "Please contact me regarding saplings."}\n\nRouted to: navikisan@gmail.com`
     );
-    return `mailto:abiolics@gmail.com?subject=${subject}&body=${body}`;
+    return `mailto:navikisan@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -165,7 +165,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-base sm:text-lg font-semibold text-stone-900 tracking-tight select-all">
-                      abiolics@gmail.com
+                      navikisan@gmail.com
                     </span>
                     <button
                       onClick={handleCopyEmail}
@@ -187,10 +187,10 @@ export default function ContactPage() {
                     Phone:
                   </div>
                   <a
-                    href="tel:+919412742566"
+                    href="tel:07942637905"
                     className="text-base sm:text-lg font-semibold text-stone-900 hover:text-emerald-950 transition-colors mt-1 block"
                   >
-                    (941) 274 2566
+                    07942637905
                   </a>
                 </div>
 
@@ -299,7 +299,7 @@ export default function ContactPage() {
                     <p className="text-xs sm:text-sm text-stone-600 max-w-sm mx-auto leading-relaxed">
                       Your plantation requirement has been recorded and routed directly to{" "}
                       <strong className="text-stone-900 font-mono">
-                        abiolics@gmail.com
+                        navikisan@gmail.com
                       </strong>
                       . Our Lucknow nursery team will call you on{" "}
                       <span className="font-mono text-stone-900 font-semibold">{formData.number}</span> shortly.
@@ -430,7 +430,7 @@ export default function ContactPage() {
                       {isSubmitting ? (
                         <div className="flex items-center justify-center gap-2">
                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          <span>Routing message to abiolics@gmail.com...</span>
+                          <span>Routing message to navikisan@gmail.com...</span>
                         </div>
                       ) : (
                         <span>Send Message</span>
@@ -443,156 +443,7 @@ export default function ContactPage() {
           </div>
         </motion.div>
 
-        {/* ========================================================================= */}
-        {/* BOTTOM BANNER SECTION: DEEP GREEN WITH GRID & FLOATING SKEWED CARDS       */}
-        {/* (Directly matching the bottom banner of user reference image)             */}
-        {/* ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="rounded-[2.5rem] bg-[#0d4d34] text-white overflow-hidden p-8 sm:p-12 lg:p-16 relative mt-8 sm:mt-10 shadow-2xl"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px)
-            `,
-            backgroundSize: "32px 32px",
-          }}
-        >
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
-            {/* Left Narrative & CTA */}
-            <div className="lg:col-span-6 space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-white tracking-tight font-normal leading-[1.15]">
-                Ready to Transform Your <br />
-                <span className="italic font-serif">Plantation Yield?</span>
-              </h2>
-
-              <p className="text-xs sm:text-sm text-emerald-100/80 max-w-md leading-relaxed font-normal">
-                Experience the future of commercial horticulture with our certified,
-                micro-propagated saplings. Start optimizing your agricultural
-                operations today!
-              </p>
-
-              <div className="pt-4">
-                <a
-                  href="https://wa.me/919412742566?text=Hello%20Satyasai%20Navkisan%20Team%2C%20please%20share%20your%20certified%20nursery%20plant%20catalog%20and%20commercial%20pricing."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-stone-950 hover:bg-emerald-50 text-xs sm:text-sm font-semibold tracking-tight shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
-                >
-                  <span>Download catalog</span>
-                  <ArrowRightIcon className="w-4 h-4 text-stone-800" />
-                </a>
-              </div>
-            </div>
-
-            {/* Right Side: Animated Floating Skewed Cards (Matching Moneta Cards in Reference) */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end relative min-h-[260px] sm:min-h-[300px]">
-              
-              {/* Back Card: Angled Left */}
-              <motion.div
-                animate={{
-                  y: [0, -6, 0],
-                  rotate: [-10, -8, -10],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute right-14 sm:right-28 top-2 w-56 sm:w-64 h-80 sm:h-92 rounded-[2rem] bg-stone-100 border border-white/60 p-5 shadow-2xl flex flex-col justify-between text-stone-900 pointer-events-none"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 font-bold text-xs tracking-tight text-emerald-950">
-                    <span className="w-3.5 h-3.5 rounded-full bg-emerald-800 inline-block" />
-                    <span>SatyaSai Nursery</span>
-                  </div>
-                  <div className="w-8 h-6 rounded-md bg-stone-200 border border-stone-300" />
-                </div>
-
-                <div className="space-y-2">
-                  <div className="w-3/4 h-5 rounded-full bg-stone-200" />
-                  <div className="w-1/2 h-3 rounded-full bg-stone-200" />
-                </div>
-
-                <div className="pt-4 border-t border-stone-200/80">
-                  <div className="text-[9px] uppercase tracking-wider text-stone-400 font-mono">
-                    Certificate No.
-                  </div>
-                  <div className="text-xs font-mono font-bold text-stone-700 tracking-wider">
-                    09AAZ •••• •••• 1Z6
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Front Card: Angled Right (Matching Reference Front Card) */}
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [5, 7, 5],
-                }}
-                transition={{
-                  duration: 5.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.3,
-                }}
-                className="relative z-10 w-60 sm:w-72 h-84 sm:h-96 rounded-[2.2rem] bg-white border border-stone-100 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col justify-between text-stone-950"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-4 h-4 rounded-full bg-emerald-900 flex items-center justify-center text-[10px] text-white font-bold">
-                        S
-                      </span>
-                      <span className="font-bold text-sm tracking-tight text-stone-950">
-                        Satyasai Elite
-                      </span>
-                    </div>
-
-                    {/* Chip Graphic */}
-                    <div className="w-9 h-7 rounded-lg bg-amber-50 border border-amber-300/80 flex items-center justify-center p-1">
-                      <div className="w-full h-full border border-amber-400/60 rounded flex items-center justify-center">
-                        <div className="w-2 h-2 rounded-full bg-amber-500/80" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Soft Botanical Pill Graphic */}
-                  <div className="mt-8 space-y-2.5">
-                    <div className="w-full h-7 rounded-full bg-emerald-50 border border-emerald-100 flex items-center px-3">
-                      <span className="text-[10px] font-semibold text-emerald-900">
-                        100% Certified Tissue Culture
-                      </span>
-                    </div>
-                    <div className="w-3/4 h-7 rounded-full bg-stone-50 border border-stone-100 flex items-center px-3">
-                      <span className="text-[10px] font-semibold text-stone-600">
-                        Lucknow Polyhouse Lab
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-[9px] uppercase tracking-wider text-stone-400 font-mono">
-                    Member Identifier
-                  </div>
-                  <div className="text-sm font-mono font-bold text-stone-900 tracking-widest mt-0.5">
-                    1234 0000 4567 8901
-                  </div>
-                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-stone-100 text-[10px] text-stone-500 font-medium">
-                    <span>Exp: 12/32</span>
-                    <span className="text-emerald-900 font-bold">Trustseal Verified</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
+    
       </div>
 
       {/* Footer */}

@@ -33,33 +33,7 @@ export default function CompanyOverview() {
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-stone-100/60 rounded-full blur-2xl pointer-events-none -ml-20 -mb-20" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Trust Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-stone-200/80 mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2">
-            <span className="text-[11px] font-bold text-emerald-950 uppercase tracking-widest bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200">
-              WELCOME TO
-            </span>
-            <span className="hidden sm:inline text-xs text-stone-400">•</span>
-            <span className="text-xs sm:text-sm text-stone-600 font-medium">
-              Registered Agro-Horticultural Enterprise
-            </span>
-          </div>
-
-          {/* Official Trustseal Verified Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
-            <div className="relative flex items-center justify-center">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping absolute" />
-              <span className="w-2 h-2 rounded-full bg-emerald-600 relative" />
-            </div>
-            <CheckBadgeIcon className="w-4 h-4 text-emerald-700" />
-            <span className="text-xs font-bold text-stone-900 tracking-tight">
-              Trustseal Verified
-            </span>
-            <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-              IndiaMART
-            </span>
-          </div>
-        </div>
+      
 
         {/* Main Editorial Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -112,18 +86,18 @@ export default function CompanyOverview() {
                 </p>
 
                 <div className="mt-5 flex flex-wrap items-center gap-2.5">
-                  <a
+                  {/* <a
                     href="https://www.saigreenindia.in/enquiry.html"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-2.5 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-all hover:scale-[1.02] active:scale-95"
                   >
                     <span>Contact Us</span>
-                    <span className="text-emerald-300">→</span>
-                  </a>
+                    
+                  </a> */}
 
                   <a
-                    href="tel:+919422000000"
+                    href="tel:07942637905"
                     className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <PhoneIcon className="w-3.5 h-3.5 text-emerald-800" />
@@ -131,7 +105,7 @@ export default function CompanyOverview() {
                   </a>
 
                   <a
-                    href="mailto:contact@saigreenindia.in"
+                    href="mailto:navikisan@gmail.com"
                     className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <EnvelopeIcon className="w-3.5 h-3.5 text-emerald-800" />
@@ -147,17 +121,14 @@ export default function CompanyOverview() {
             <div className="rounded-3xl bg-white border border-stone-200/90 shadow-xs p-5 sm:p-7">
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-stone-100">
                 <div>
-                  <h3 className="text-xs font-bold text-stone-400 uppercase tracking-wider">
-                    Corporate Dossier & Verified Credentials
+                  <h3 className="text-xs font-bold text-stone-400 uppercase ">
+                   Business Details
                   </h3>
                   <p className="text-xs text-stone-600 mt-0.5">
-                    Official registration data filed with the Ministry of Corporate Affairs & GST Network.
+                    Official registration details.
                   </p>
                 </div>
-                <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-900 text-[11px] font-semibold border border-emerald-200">
-                  <CheckBadgeIcon className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>Active & In Good Standing</span>
-                </div>
+                
               </div>
 
               {/* Specification Grid */}
@@ -210,7 +181,7 @@ export default function CompanyOverview() {
                     </span>
                   </div>
                   <div className="text-sm font-bold text-stone-950 tracking-tight">
-                    0 - 40 L
+                    ~ 40 L
                   </div>
                 </div>
 

@@ -282,7 +282,7 @@ export default function AcreageCalculatorModal({
         {/* Booking CTA */}
         <div className="flex flex-col sm:flex-row gap-3">
           <a
-            href={`https://wa.me/919422000000?text=${whatsAppText}`}
+            href={`https://wa.me/917942637905?text=${whatsAppText}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 py-3.5 px-6 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-sm text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 transition-all"

@@ -48,7 +48,7 @@ export default function Home() {
       <AboutJourneySection />
 
       {/* 4 Horticultural Excellence Pillars Below Hero */}
-      <section className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      {/* <section className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="text-center max-w-xl mx-auto mb-8">
           <span className="text-[11px] font-semibold text-emerald-800 uppercase tracking-widest bg-emerald-100/70 px-3 py-1 rounded-full border border-emerald-200">
             Certified Nursery Portfolio
@@ -142,7 +142,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Auto-Sliding Testimonials with Smooth Fog Fade */}
       <TestimonialsSection />
