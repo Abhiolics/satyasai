@@ -1,28 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import TreeSilhouette from "./TreeSilhouette";
-import {
-  CheckCircleIcon,
-  ArrowRightIcon,
-  ShieldCheckIcon,
-} from "@heroicons/react/24/outline";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => setSubscribed(false), 5000);
-      setEmail("");
-      setName("");
-    }
-  };
 
   return (
     <footer className="w-full relative mt-16 overflow-hidden">
@@ -33,12 +15,12 @@ export default function Footer() {
       <div className="bg-[#1b3e2b] text-emerald-50 px-4 sm:px-6 lg:px-12 pt-10 pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Main 4-Column Grid with Vertical Column Dividers */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-8 lg:gap-0 pb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 pb-12">
 
             {/* ---------------------------------------------------- */}
-            {/* COLUMN 1: Company Links & Socials (Cols 1-3)         */}
+            {/* COLUMN 1: Company Links & Socials                   */}
             {/* ---------------------------------------------------- */}
-            <div className="lg:col-span-3 lg:pr-8 flex flex-col justify-between">
+            <div className="lg:pr-6 flex flex-col justify-between">
               <div>
                 <h4 className="font-semibold text-emerald-200 text-sm tracking-wide mb-4 uppercase">
                   Company
@@ -59,8 +41,26 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"
                     >
-                      Testimonial
+                      Client Testimonials
                     </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.saigreenindia.in/photos.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      Estate & Nursery Photos
+                    </a>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="hover:text-white transition-colors"
+                    >
+                      Contact Us
+                    </Link>
                   </li>
                   <li>
                     <a
@@ -72,28 +72,10 @@ export default function Footer() {
                       Sitemap
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="https://www.saigreenindia.in/photos.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
-                    >
-                      Photos
-                    </a>
-                  </li>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="hover:text-white transition-colors"
-                    >
-                      Contact Us
-                    </Link>
-                  </li>
                 </ul>
               </div>
 
-              {/* Share Us Social Icons (Real SVG Icons, Not Letters) */}
+              {/* Share Us Social Icons (Real SVG Icons) */}
               <div className="mt-8 pt-4 border-t border-emerald-800/60">
                 <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-wider block mb-2.5">
                   Follow Us
@@ -154,12 +136,10 @@ export default function Footer() {
               </div>
             </div>
 
-       
-
             {/* ---------------------------------------------------- */}
-            {/* COLUMN 3: Products & Services (Cols 7-9)            */}
+            {/* COLUMN 2: Products & Certified Varieties            */}
             {/* ---------------------------------------------------- */}
-            <div className="lg:col-span-3 lg:px-8 lg:border-l lg:border-emerald-800/60">
+            <div className="lg:px-6 lg:border-l lg:border-emerald-800/60">
               <h4 className="font-semibold text-emerald-200 text-sm tracking-wide mb-4 uppercase">
                 <a
                   href="https://www.saigreenindia.in/products-and-services.html"
@@ -167,8 +147,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:underline flex items-center gap-1"
                 >
-                  <span>Products & Services</span>
-                  {/* <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" /> */}
+                  <span>Products & Varieties</span>
                 </a>
               </h4>
               <ul className="space-y-2 text-xs text-emerald-100/90 font-medium">
@@ -179,7 +158,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Fruit Plant
+                    Fruit Plant Nursery
                   </a>
                 </li>
                 <li>
@@ -189,27 +168,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Mango Plants
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.saigreenindia.in/fresh-fruits.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Fresh Fruits
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.saigreenindia.in/teak-plant.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Teak Plant
+                    Mango Plants (9 Grafts)
                   </a>
                 </li>
                 <li>
@@ -219,17 +178,17 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Guava Plants
+                    Taiwan Pink Guava
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.saigreenindia.in/popler-plant.html"
+                    href="https://www.saigreenindia.in/teak-plant.html"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Popler Plant
+                    Tissue-Cultured Teak
                   </a>
                 </li>
                 <li>
@@ -239,37 +198,96 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Lemon Tree
+                    Seedless Lemon Tree
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.saigreenindia.in/banana-tissue-culture-plants.html"
+                    href="https://www.saigreenindia.in/popler-plant.html"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Banana Tissue Culture Plants
+                    Commercial Poplar
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.saigreenindia.in/fresh-fruits.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Fresh Orchard Produce
                   </a>
                 </li>
                 <li className="pt-1">
-                  <a
-                    href="https://www.saigreenindia.in/products-and-services.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/#products"
                     className="text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1"
                   >
-                    <span>View All Products</span>
-
-                  </a>
+                    <span>View Botanical Catalog</span>
+                  </Link>
                 </li>
+              </ul>
+            </div>
+
+            {/* ---------------------------------------------------- */}
+            {/* COLUMN 3: Nursery Policies & Quality Assurance      */}
+            {/* ---------------------------------------------------- */}
+            <div className="lg:px-6 lg:border-l lg:border-emerald-800/60">
+              <h4 className="font-semibold text-emerald-200 text-sm tracking-wide mb-4 uppercase">
+                Policies & Trust
+              </h4>
+              <ul className="space-y-2 text-xs text-emerald-100/90 font-medium">
+                <li>
+                  <Link
+                    href="/terms"
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Terms of Use</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Privacy Policy</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shipping-policy"
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Shipping & Delivery Policy</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/refund-policy"
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Return & Refund Policy</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/plant-guarantee"
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Graft Purity Guarantee</span>
+                  </Link>
+                </li>
+          
               </ul>
             </div>
 
             {/* ---------------------------------------------------- */}
             {/* COLUMN 4: Send Us A Message & Contact (Right side)  */}
             {/* ---------------------------------------------------- */}
-            <div className="lg:col-span-2 lg:pl-8 lg:border-l lg:border-emerald-800/60 flex flex-col justify-between">
+            <div className="lg:pl-6 lg:border-l lg:border-emerald-800/60 flex flex-col justify-between">
               <div>
                 <a
                   href="https://www.saigreenindia.in/enquiry.html"
@@ -278,7 +296,6 @@ export default function Footer() {
                   className="font-semibold text-emerald-100 hover:text-white text-sm flex items-center gap-1.5 transition-colors group mb-4"
                 >
                   <span>Send Us A Message</span>
-                  {/* <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" /> */}
                 </a>
 
                 {/* Direct Phone Number & Email */}
@@ -303,27 +320,25 @@ export default function Footer() {
                     Satyasai Navkisan Green India Private Limited
                   </p>
                   <p>Lucknow, Uttar Pradesh - India</p>
-                  <p className=" text-[11px] text-emerald-200/80 pt-1">
+                  <p className="text-[11px] text-emerald-200/80 pt-1">
                     GST: 09AAZCS8852J1Z6
                   </p>
                 </div>
               </div>
-
-
             </div>
 
           </div>
         </div>
       </div>
 
-      {/* 3. Deep Dark Green Bottom Copyright Bar (Matching Reference Image) */}
+      {/* 3. Deep Dark Green Bottom Copyright Bar */}
       <div className="bg-[#142e20] text-emerald-300/80 text-[11px] pt-4 pb-24 md:pb-4 px-4 sm:px-6 border-t border-emerald-900/60">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-center sm:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+          <p>
             © 2026 Satyasai Navkisan Green India Private Limited. All Rights Reserved
           </p>
 
-          <div className="flex items-center gap-4 text-emerald-400/70">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-3 gap-y-1 text-emerald-400/80">
             <Link
               href="/terms"
               className="hover:text-emerald-200 transition-colors"
@@ -336,6 +351,27 @@ export default function Footer() {
               className="hover:text-emerald-200 transition-colors"
             >
               Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link
+              href="/shipping-policy"
+              className="hover:text-emerald-200 transition-colors"
+            >
+              Shipping & Delivery
+            </Link>
+            <span>•</span>
+            <Link
+              href="/refund-policy"
+              className="hover:text-emerald-200 transition-colors"
+            >
+              Return & Refund
+            </Link>
+            <span>•</span>
+            <Link
+              href="/plant-guarantee"
+              className="hover:text-emerald-200 transition-colors"
+            >
+              Graft Guarantee
             </Link>
           </div>
         </div>
