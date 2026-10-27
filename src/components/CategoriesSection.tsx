@@ -64,6 +64,18 @@ export default function CategoriesSection() {
     });
   }, [activeCategory, currentProducts]);
 
+  // Listen for category selection events dispatched from hero carousel or external CTA
+  useEffect(() => {
+    const handleCategorySelect = (e: Event) => {
+      const customEvent = e as CustomEvent<CategoryId>;
+      if (customEvent.detail && CATEGORIES_LIST.some((c) => c.id === customEvent.detail)) {
+        setActiveCategory(customEvent.detail);
+      }
+    };
+    window.addEventListener("select-category", handleCategorySelect);
+    return () => window.removeEventListener("select-category", handleCategorySelect);
+  }, []);
+
   const handleScrollCategories = (direction: "left" | "right") => {
     if (!categoryScrollRef.current) return;
     const scrollAmount = 280;

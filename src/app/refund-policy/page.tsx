@@ -111,11 +111,18 @@ export default function RefundPolicyPage() {
 
           <section>
             <h2 className="text-lg font-bold text-stone-950 mb-3">
-              5. Post-Planting Mortality & Plantation Care
+              5. Plant Mortality Replacement Policy (10% Cap) &amp; Field Care
             </h2>
-            <p>
-              Once saplings have been safely received, accepted, and transferred to private farm fields or orchards, seedling survival depends entirely on field agronomy, soil salinity, adequate irrigation, pest control, and protection from grazing livestock. Therefore, mortality occurring weeks or months post-plantation due to climatic drought, over-watering, or unscientific chemical applications is beyond nursery control. However, our technical agronomy helpline remains available to guide growers on best practices.
-            </p>
+            <div className="space-y-3">
+              <p>
+                The company shall not replace more than <strong>10% of mortality</strong> of the plants within <strong>three (3) months</strong> from the date of purchase of the plants, subject to physical verification and confirmation by the technical personnel / agriculture officers of the company.
+              </p>
+              <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-700 space-y-1">
+                <p>• <strong>No Buy-Back Policy:</strong> The company will not buy the crop against purchase.</p>
+                <p>• <strong>Plantation Work:</strong> The company is not responsible for field plantation labor.</p>
+                <p>• <strong>Crop Yield:</strong> Growth and yield depend on soil, water, climate, and cultivation practices.</p>
+              </div>
+            </div>
           </section>
 
           <section>

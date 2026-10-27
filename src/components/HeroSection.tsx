@@ -1,207 +1,267 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import {
-  ArrowRightIcon,
-  ArrowsPointingOutIcon,
-  ArrowsPointingInIcon,
-  SunIcon,
-  MoonIcon,
-  Square2StackIcon,
-} from "@heroicons/react/24/outline";
-import VarietyDock from "./VarietyDock";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 interface HeroSectionProps {
   onOpenCalculator?: (plantId?: string) => void;
-  onSelectPlant: (plantId: string) => void;
+  onSelectPlant?: (plantId: string) => void;
   isAudioPlaying?: boolean;
   onToggleAudio?: () => void;
 }
 
-const HEADLINE_OPTIONS = [
+interface HeroSlide {
+  id: string;
+  tag: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  buttonText: string;
+  categoryId: string;
+  plantId?: string;
+}
+
+const SLIDES: HeroSlide[] = [
   {
-    prefix: "Beyond harvest,",
-    highlight: "we build the eternal.",
+    id: "teak",
+    tag: "Premium Quality Commercial Timber",
+    title: "Teak Plants",
     subtitle:
-      "Cultivating high-yielding fruit orchards and timber forestry for visionary growers. From certified mango and guava grafts to tissue-cultured teak estates.",
+      "Certified tissue-cultured & root-trained Burma teak saplings engineered for straight, knot-free timber boles with rapid girth expansion and 99.2% verified field survival.",
+    image: "/images/hero-teak.jpg",
+    buttonText: "Explore Now",
+    categoryId: "teak",
+    plantId: "teak",
   },
   {
-    prefix: "Rooted in earth,",
-    highlight: "we nurture living legacies.",
+    id: "guava",
+    tag: "High Density Fruit Meadow",
+    title: "Guava Plants",
     subtitle:
-      "India's premier certified botanical nursery. Empowering modern agriculture with high-density fruit orchards and generational teak equity.",
+      "Fast-bearing, jumbo crisp pink-fleshed Taiwan Pink & Allahabadi guavas yielding in 8-10 months. Engineered for UHDP commercial meadow farming with 2-3 heavy harvest flushes annually.",
+    image: "/images/hero-guava.jpg",
+    buttonText: "Explore Now",
+    categoryId: "guava",
+    plantId: "guava",
   },
   {
-    prefix: "Beyond silence,",
-    highlight: "we cultivate the eternal green.",
+    id: "mohgini",
+    tag: "Generational Agroforestry Asset",
+    title: "Mohgini Plants",
     subtitle:
-      "45+ acres of certified mother blocks and automated polyhouses. Precision-engineered rootstocks for guaranteed field survival.",
+      "Hardy African Mahogany saplings raised in root-trainer polybags. High disease resistance, natural termite immunity, and exponential timber valuation for visionary landowners.",
+    image: "/images/hero-mohgini.jpg",
+    buttonText: "Explore Now",
+    categoryId: "mohgini",
+    plantId: "nursery",
+  },
+  {
+    id: "poplar",
+    tag: "Rapid Growth Industrial Timber",
+    title: "Poplar Plants",
+    subtitle:
+      "High-vigor commercial clones (109, 110 & 112) for industrial plywood, matchwood and particle board. Ready for commercial timber mandis in just 5 to 6 years with peak market pricing.",
+    image: "/images/hero-poplar.jpg",
+    buttonText: "Explore Now",
+    categoryId: "poplar",
+    plantId: "poplar",
+  },
+  {
+    id: "lemon",
+    tag: "Continuous Annual Cashflow",
+    title: "Lemon Plants",
+    subtitle:
+      "Prolific Kagzi Baramasi & Kumbhakt high-juice varieties. Round-the-year heavy fruiting with robust resistance to citrus canker, root rot, and seasonal heat stress.",
+    image: "/images/hero-lemon.jpg",
+    buttonText: "Explore Now",
+    categoryId: "lemon",
+    plantId: "lemon",
   },
 ];
 
 export default function HeroSection({
   onSelectPlant,
-  isAudioPlaying,
-  onToggleAudio,
 }: HeroSectionProps) {
-  const [headlineIndex, setHeadlineIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState("all");
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [lightingMode, setLightingMode] = useState<"day" | "golden" | "dusk">("day");
-  // Default background is the user-uploaded greenhouse conservatory image
-  const [backgroundScene, setBackgroundScene] = useState<"greenhouse" | "estate">("greenhouse");
+  const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  const currentHeadline = HEADLINE_OPTIONS[headlineIndex];
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+  }, []);
 
-  const handleNextHeadline = () => {
-    setHeadlineIndex((prev) => (prev + 1) % HEADLINE_OPTIONS.length);
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
   };
 
-  const getLightingFilter = () => {
-    switch (lightingMode) {
-      case "golden":
-        return "sepia(20%) saturate(125%) hue-rotate(-8deg) brightness(1.03)";
-      case "dusk":
-        return "brightness(0.85) contrast(1.1) saturate(115%) hue-rotate(12deg)";
-      default:
-        return "none";
+  // Auto-play timer (5.5s), pauses on hover or touch
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
+
+  // Keyboard navigation for accessibility
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") nextSlide();
+      if (e.key === "ArrowLeft") prevSlide();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [nextSlide, prevSlide]);
+
+  // Touch swipe support for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (diff > minSwipeDistance) {
+      nextSlide();
+    } else if (diff < -minSwipeDistance) {
+      prevSlide();
     }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
-  const bgImageSrc =
-    backgroundScene === "greenhouse"
-      ? "/images/greenhouse-hero.jpg"
-      : "/images/hero-estate.jpg";
+  const currentSlide = SLIDES[currentIndex];
+
+  const handleButtonClick = (slide: HeroSlide) => {
+    // Redirect to respective category page as requested
+    router.push(`/plants?category=${slide.categoryId}`);
+  };
 
   return (
     <section
-      className={`relative w-full overflow-hidden select-none transition-all duration-500 flex flex-col justify-between ${
-        isFullscreen
-          ? "fixed inset-0 z-50 h-screen w-screen"
-          : "min-h-[100vh] lg:min-h-[105vh] pt-24 sm:pt-28 pb-10"
-      }`}
+      aria-label="Hero Carousel"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      className="relative w-full min-h-[90vh] sm:min-h-[94vh] lg:min-h-[98vh] flex items-center overflow-hidden select-none bg-stone-950 pt-20 sm:pt-24 pb-16"
     >
-      {/* 1. USER'S BOTANICAL CONSERVATORY BACKGROUND IMAGE */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="relative w-full h-full transition-all duration-700 ease-out"
-          style={{ filter: getLightingFilter() }}
+      {/* Background Slides with AnimatePresence */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={currentSlide.id}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1.0] }}
+          className="absolute inset-0 z-0"
         >
           <Image
-            src={bgImageSrc}
-            alt="Satyasai Navkisan Green India Botanical Conservatory & Polyhouse"
+            src={currentSlide.image}
+            alt={currentSlide.title}
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            className="object-cover object-center sm:object-[center_35%]"
+            className="object-cover object-center"
           />
-        </div>
 
-        {/* Soft atmospheric upper gradient for pristine typography readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fafaf9]/94 via-[#fafaf9]/65 to-transparent h-[58%] pointer-events-none" />
+          {/* High-legibility scrim overlays matching reference design */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25 sm:from-black/80 sm:via-black/45 sm:to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/40" />
+        </motion.div>
+      </AnimatePresence>
 
-        {/* Dynamic lighting overlays */}
-        {lightingMode === "golden" && (
-          <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/15 via-transparent to-amber-200/10 pointer-events-none mix-blend-screen" />
-        )}
-        {lightingMode === "dusk" && (
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/45 via-blue-950/20 to-transparent pointer-events-none" />
-        )}
+      {/* Main Slide Content: Left-to-Center Layout */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="max-w-2xl text-left">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex flex-col items-start gap-3.5 sm:gap-5"
+            >
+              {/* Badge Tag matching reference */}
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-200 bg-white/10 backdrop-blur-md border border-white/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                {currentSlide.tag}
+              </span>
 
-        {/* Bottom subtle gradient */}
-        <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-stone-950/45 via-stone-950/15 to-transparent pointer-events-none" />
-      </div>
+              {/* Slide Title */}
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+                {currentSlide.title}
+              </h1>
 
-      {/* 2. TEXT DIRECTLY ON TOP OF IMAGE */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
-        {/* Big Editorial Headline */}
-        <div
-          onClick={handleNextHeadline}
-          className="group cursor-pointer transition-transform duration-300 active:scale-[0.99] mt-12"
-        >
-          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.4rem] leading-[1.05] tracking-[-0.03em] text-stone-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)] transition-all duration-300">
-            {currentHeadline.prefix}{" "}
-            <span className="italic font-normal text-emerald-950">
-              {currentHeadline.highlight}
-            </span>
-          </h1>
-        </div>
+              {/* Subheading with rich agronomic and yield details */}
+              <p className="text-white/95 text-sm sm:text-lg md:text-xl font-normal leading-relaxed max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+                {currentSlide.subtitle}
+              </p>
 
-        {/* Editorial Subtitle */}
-        <p className="mt-3 sm:mt-4 text-center text-sm sm:text-base md:text-lg text-stone-800 max-w-2xl mx-auto leading-relaxed font-normal px-2 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-          {currentHeadline.subtitle}
-        </p>
-
-        {/* Explore Products Button */}
-        <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="#products"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.getElementById("products");
-              if (el) {
-                el.scrollIntoView({ behavior: "smooth" });
-              } else {
-                window.location.hash = "#products";
-              }
-            }}
-            className="px-8 sm:px-9 py-3 sm:py-3.5 rounded-full bg-stone-950 hover:bg-stone-900 text-white font-semibold text-sm sm:text-base shadow-xl shadow-stone-950/25 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer"
-          >
-            <span>Explore Products</span>
-            <ArrowRightIcon className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
-          </a>
+              {/* Call to Action Button - SAME VIBRANT GREEN COLOR ON ALL SLIDES */}
+              <div className="pt-2 sm:pt-4">
+                <button
+                  type="button"
+                  onClick={() => handleButtonClick(currentSlide)}
+                  className="group inline-flex items-center gap-2.5 sm:gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-base sm:text-lg shadow-xl shadow-emerald-950/40 transition-all duration-200 transform hover:scale-[1.03] active:scale-95 cursor-pointer"
+                >
+                  <span>{currentSlide.buttonText}</span>
+                  <ArrowRightIcon className="w-5 h-5 text-white transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* 3. Bottom Right Floating Controls */}
-      <div className="absolute bottom-5 sm:bottom-8 right-4 sm:right-8 z-30 flex flex-col gap-2.5">
-        {/* Expand / Minimize Fullscreen Toggle */}
-       
-
-        {/* Scene Switcher */}
-        {/* <button
-          onClick={() =>
-            setBackgroundScene(
-              backgroundScene === "greenhouse" ? "estate" : "greenhouse"
-            )
-          }
-          aria-label="Switch Background View"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/75 backdrop-blur-xl border border-white/70 flex items-center justify-center text-stone-850 hover:text-stone-950 hover:bg-white shadow-xl transition-all active:scale-95 group"
-          title={
-            backgroundScene === "greenhouse"
-              ? "Current: Botanical Conservatory (Click for Valley Estate)"
-              : "Current: Valley Estate (Click for Botanical Conservatory)"
-          }
-        >
-          <Square2StackIcon className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-800 group-hover:scale-110 transition-transform" />
-        </button> */}
-
-        {/* Atmosphere Time of Day Toggle */}
-        {/* <button
-          onClick={() => {
-            if (lightingMode === "day") setLightingMode("golden");
-            else if (lightingMode === "golden") setLightingMode("dusk");
-            else setLightingMode("day");
-          }}
-          aria-label="Toggle Atmosphere Lighting"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/75 backdrop-blur-xl border border-white/70 flex items-center justify-center text-stone-850 hover:text-stone-950 hover:bg-white shadow-xl transition-all active:scale-95 group"
-          title={`Lighting: ${lightingMode.toUpperCase()}`}
-        >
-          {lightingMode === "day" && (
-            <SunIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 group-hover:rotate-45 transition-transform" />
-          )}
-          {lightingMode === "golden" && (
-            <SunIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 group-hover:scale-110 transition-transform" />
-          )}
-          {lightingMode === "dusk" && (
-            <MoonIcon className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500 group-hover:-rotate-12 transition-transform" />
-          )}
-        </button> */}
+      {/* Navigation: ONLY DOTS (NO CHEVRONS) */}
+      <div
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 sm:gap-3.5"
+        role="tablist"
+        aria-label="Carousel Slides"
+      >
+        {SLIDES.map((slide, index) => {
+          const isActive = index === currentIndex;
+          return (
+            <button
+              key={slide.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+              onClick={() => goToSlide(index)}
+              className="group relative p-2 focus:outline-hidden cursor-pointer"
+            >
+              <span
+                className={`block transition-all duration-300 rounded-full ${
+                  isActive
+                    ? "w-8 sm:w-10 h-2.5 sm:h-3 bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.85)]"
+                    : "w-2.5 sm:w-3 h-2.5 sm:h-3 bg-white/55 hover:bg-white/90 group-hover:scale-125"
+                }`}
+              />
+            </button>
+          );
+        })}
       </div>
-
-    
     </section>
   );
 }

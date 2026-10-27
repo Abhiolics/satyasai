@@ -2,11 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import {
+  ShieldCheckIcon,
+  ExclamationTriangleIcon,
+  BanknotesIcon,
+  TruckIcon,
+  DocumentTextIcon,
+  ScaleIcon,
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Satyasai Navkisan Green India Private Limited",
+  title: "Terms & Conditions Policy | Satyasai Navkisan Green India Private Limited",
   description:
-    "Terms and conditions for using the Satyasai Navkisan Green India Private Limited website, purchasing certified nursery saplings, and agro-forestry services.",
+    "Official Terms and Conditions policy for plant orders, advance booking, delivery, payment terms, mortality replacement, and technical agronomy services.",
 };
 
 export default function TermsPage() {
@@ -16,134 +26,213 @@ export default function TermsPage() {
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-16">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-xs text-stone-500 font-medium">
+        <nav className="mb-6 text-xs text-stone-500 font-medium flex items-center gap-2">
           <Link href="/" className="hover:text-stone-900 transition-colors">
             Home
           </Link>
-          <span className="mx-2 text-stone-400">/</span>
-          <span className="text-stone-800">Terms of Use</span>
+          <span className="text-stone-400">/</span>
+          <span className="text-emerald-800 font-semibold">Terms & Conditions</span>
         </nav>
 
         {/* Header */}
         <div className="border-b border-stone-200 pb-6 mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 border border-emerald-200 mb-3">
+            <DocumentTextIcon className="w-4 h-4" />
+            Official Company Policy
+          </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-stone-950">
-            Terms of Use
+            Terms &amp; Conditions Policy
           </h1>
           <p className="mt-2 text-sm text-stone-600">
-            Last Updated: October 2026 • Satyasai Navkisan Green India Private Limited
+            Satyasai Navkisan Green India Private Limited • Registered in Lucknow, Uttar Pradesh
           </p>
         </div>
 
-        {/* Content Body */}
+        {/* Highlight Summary Card */}
+        <div className="bg-emerald-950 text-white rounded-2xl p-6 sm:p-8 mb-8 shadow-xl shadow-emerald-950/20">
+          <div className="flex items-start gap-3.5 mb-4">
+            <InformationCircleIcon className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+            <div>
+              <h2 className="text-lg font-bold text-white tracking-tight">
+                Key Order &amp; Delivery Terms Summary
+              </h2>
+              <p className="text-xs sm:text-sm text-emerald-200/90 mt-1">
+                Please review our verified commercial purchase and delivery guidelines before placing your sapling booking.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-stone-200">
+            <div className="flex items-center gap-2 bg-emerald-900/60 p-3 rounded-xl border border-emerald-800/80">
+              <span className="text-emerald-400 font-bold">•</span>
+              <span>₹500/- advance per unit (valid 3 months, non-refundable).</span>
+            </div>
+            <div className="flex items-center gap-2 bg-emerald-900/60 p-3 rounded-xl border border-emerald-800/80">
+              <span className="text-emerald-400 font-bold">•</span>
+              <span>Balance payable against delivery at prevailing rates.</span>
+            </div>
+            <div className="flex items-center gap-2 bg-emerald-900/60 p-3 rounded-xl border border-emerald-800/80">
+              <span className="text-emerald-400 font-bold">•</span>
+              <span>DD in the name of SATYASAI NAVKISAN GREEN INDIA PVT. LTD.</span>
+            </div>
+            <div className="flex items-center gap-2 bg-emerald-900/60 p-3 rounded-xl border border-emerald-800/80">
+              <span className="text-emerald-400 font-bold">•</span>
+              <span>Subject to exclusive Lucknow Jurisdiction only.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Clauses Body */}
         <div className="bg-white rounded-2xl border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8 text-sm leading-relaxed text-stone-700">
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              1. Acceptance of Terms
+          {/* Clause 1: Delivery Cancellation & Postponement */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <TruckIcon className="w-5 h-5 text-emerald-700" />
+              <span>1. Delivery Cancellation &amp; Postponement</span>
             </h2>
-            <p>
-              By accessing and using this website, inquiring about nursery inventory, or placing an order with Satyasai Navkisan Green India Private Limited (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;), you agree to comply with and be bound by the following Terms of Use. If you do not agree to these terms, please do not use this website or our commercial services.
+            <p className="text-stone-700 pl-7">
+              The company shall be entitled to cancel or postpone delivery in any event or circumstances arising beyond its control (including adverse weather, transporter delays, governmental restrictions, or natural calamities).
             </p>
           </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              2. Botanical & Nursery Products
+          {/* Clause 2: Terms of Payment & Advance */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <BanknotesIcon className="w-5 h-5 text-emerald-700" />
+              <span>2. Terms of Payment &amp; Advance Validity</span>
             </h2>
-            <p className="mb-3">
-              We specialize in propagating certified fruit plant grafts (including Mango, Taiwan Pink Guava, Lemon) and commercial agro-forestry saplings (Tissue-Cultured Burma Teak, Poplar, etc.).
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong>Live Plant Nature:</strong> Plants are living organisms. Variations in foliage, branching, height, and seasonal dormancy are natural and do not constitute defective goods.
-              </li>
-              <li>
-                <strong>Catalog Specifications:</strong> Product photographs, specifications, and growth timelines shown on our website represent typical healthy specimens grown under standard scientific nursery practices.
-              </li>
-            </ul>
+            <div className="pl-7 space-y-2">
+              <p>
+                <strong>Advance Amount:</strong> Terms of payment are <strong>Rs. 500/- advance per unit</strong>, and the balance amount is payable against delivery.
+              </p>
+              <p>
+                <strong>Validity Period:</strong> Advance payment received is valid for a <strong>three-month period only</strong> from the date of deposit and is strictly <strong>non-refundable</strong>.
+              </p>
+              <p>
+                <strong>Prevailing Rate:</strong> Payment should be made by the customer as per the rate in force at the time of delivery.
+              </p>
+            </div>
           </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              3. Orders, Inquiries & Farm-Gate Pricing
+          {/* Clause 3: Title & Property Ownership */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ShieldCheckIcon className="w-5 h-5 text-emerald-700" />
+              <span>3. Product Ownership &amp; Title</span>
             </h2>
-            <p className="mb-3">
-              All quotes provided via our website, phone desk, or WhatsApp are farm-gate estimates based on batch availability at our Lucknow polyhouses.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                Orders are confirmed upon mutual agreement on batch specifications, quantity, and payment terms.
-              </li>
-              <li>
-                Minimum order quantities (MOQ) may apply for commercial orchard shipments and interstate logistical freight.
-              </li>
-              <li>
-                Applicable taxes, GST, loading charges, and transportation freight will be explicitly detailed in commercial invoices.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              4. Transportation, Dispatch & Delivery
-            </h2>
-            <p className="mb-3">
-              We coordinate dispatch across India using specialized root-ball packing and ventilated vehicle carriers to ensure transit safety.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                Buyers are responsible for inspecting sapling condition immediately upon arrival at the destination site.
-              </li>
-              <li>
-                Any transit damage or discrepancy must be reported within 24 hours of unloading with photographic verification.
-              </li>
-              <li>
-                Unloading at the buyer&apos;s site is the responsibility of the consignee unless full turnkey unloading was contracted in writing.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              5. Field Care & Plantation Disclaimers
-            </h2>
-            <p>
-              While our certified strains undergo rigorous mother-block indexing and hardening, ultimate crop yields and plantation survival rates depend on environmental factors outside our control, including soil preparation, irrigation, local climate, water pH, and timely agrochemical management. Agronomy guidance provided by our staff is advisory in nature and based on standard good agricultural practices.
+            <p className="text-stone-700 pl-7">
+              Product supplied to the customer shall remain the exclusive property of the company until the full sale amount is completely realized and cleared.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              6. Intellectual Property
+          {/* Clause 4: Non-Returnable & Non-Refundable Policy */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ExclamationTriangleIcon className="w-5 h-5 text-amber-600" />
+              <span>4. Final Sale Policy (No Return &amp; Non-Refundable)</span>
             </h2>
-            <p>
-              All content on this website, including nursery catalogs, plant specifications, logos, brand names, blueprints, images, and text, is the property of Satyasai Navkisan Green India Private Limited and protected under applicable intellectual property laws. Unauthorized reproduction or commercial distribution without written consent is prohibited.
+            <p className="text-stone-700 pl-7">
+              Products once sold will not be taken back under any circumstances and the amount paid is non-refundable. Due to the biological and perishable nature of living rootstocks, saplings once dispatched cannot be returned.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              7. Governing Law & Jurisdiction
+          {/* Clause 5: Payment Mode & Demand Draft Instructions */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <DocumentTextIcon className="w-5 h-5 text-emerald-700" />
+              <span>5. Demand Draft &amp; Payment Mode</span>
             </h2>
-            <p>
-              These Terms of Use shall be governed by and construed in accordance with the laws of the Republic of India. Any disputes arising from transactions or use of this website shall be subject to the exclusive jurisdiction of the competent courts in Lucknow, Uttar Pradesh.
+            <div className="pl-7 bg-stone-50 border border-stone-200 rounded-xl p-4">
+              <p className="font-semibold text-stone-900 mb-1">
+                Official Payee Details:
+              </p>
+              <p className="text-stone-700">
+                Demand Draft (DD) should be drawn strictly in the name of:
+              </p>
+              <p className="text-base font-bold text-emerald-950 tracking-wide mt-1">
+                SATYASAI NAVKISAN GREEN INDIA PVT. LTD.
+              </p>
+              <p className="text-xs text-stone-500 mt-1">
+                Payment payable at our branch office in Lucknow.
+              </p>
+            </div>
+          </section>
+
+          {/* Clause 6: Crop Growth & Yield Disclaimer */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ScaleIcon className="w-5 h-5 text-emerald-700" />
+              <span>6. Crop Growth &amp; Yield Disclaimer</span>
+            </h2>
+            <p className="text-stone-700 pl-7">
+              The company is in no way responsible for fluctuations in growth and yield of the crop. Since the growth and yield of agricultural crops depend entirely on the quality and suitability of soil, irrigation water, climatic conditions, pest management, and cultivation practices undertaken by the grower, results may vary.
             </p>
           </section>
 
-          <section className="pt-4 border-t border-stone-200">
-            <h2 className="text-lg font-bold text-stone-950 mb-3">
-              8. Contact Information
+          {/* Clause 7: No Buy-Back Policy */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ExclamationTriangleIcon className="w-5 h-5 text-amber-600" />
+              <span>7. No Buy-Back Policy</span>
             </h2>
-            <p className="mb-3">
-              If you have any questions or require clarifications regarding these terms, please contact our administrative desk:
+            <p className="text-stone-700 pl-7">
+              The company will not buy the crop against purchase (<strong>Strictly No Buy-Back Policy</strong>). The company acts solely as a certified nursery producer and horticultural supplier.
             </p>
-            <div className="bg-stone-50 rounded-xl p-4 border border-stone-200/80 space-y-1.5 text-xs text-stone-800">
-              <p className="font-semibold text-stone-950">
-                Satyasai Navkisan Green India Private Limited
+          </section>
+
+          {/* Clause 8: Plantation Work Disclaimer */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <InformationCircleIcon className="w-5 h-5 text-emerald-700" />
+              <span>8. Plantation Work Responsibility</span>
+            </h2>
+            <p className="text-stone-700 pl-7">
+              The company will not be responsible for plantation work, digging of pits, field transplantation, or physical labor at the buyer&apos;s site unless explicitly agreed in writing under a separate contractual turnkey agreement.
+            </p>
+          </section>
+
+          {/* Clause 9: Plant Mortality Replacement (10% Cap) */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ShieldCheckIcon className="w-5 h-5 text-emerald-700" />
+              <span>9. Plant Mortality Replacement Policy</span>
+            </h2>
+            <p className="text-stone-700 pl-7">
+              The company shall not replace more than <strong>10% of mortality</strong> of the plants within <strong>three months</strong> from the date of purchase of the plants, and any replacement is strictly subject to prior inspection and verification by the technical personnel / agriculture officers of the company.
+            </p>
+          </section>
+
+          {/* Clause 10: Technical Advisory Service */}
+          <section className="space-y-2">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <CheckCircleIcon className="w-5 h-5 text-emerald-700" />
+              <span>10. Technical Service &amp; Agronomy Advisory</span>
+            </h2>
+            <p className="text-stone-700 pl-7">
+              Technical advisory service will be provided through our certified <strong>Agriculture Officers</strong> for customers purchasing <strong>10 units and above</strong>, for up to <strong>two (2) years</strong> from the date of purchase.
+            </p>
+          </section>
+
+          {/* Clause 11: Legal Jurisdiction */}
+          <section className="space-y-2 pt-4 border-t border-stone-200">
+            <h2 className="text-base sm:text-lg font-bold text-stone-950 flex items-center gap-2">
+              <ScaleIcon className="w-5 h-5 text-emerald-800" />
+              <span>11. Legal Jurisdiction</span>
+            </h2>
+            <p className="text-stone-800 pl-7 font-semibold">
+              &ldquo;All disputes, claims, or transactions are subject to Lucknow Jurisdiction only.&rdquo;
+            </p>
+          </section>
+
+          {/* Corporate Identification */}
+          <section className="pt-6 border-t border-stone-200">
+            <div className="bg-stone-50 rounded-xl p-5 border border-stone-200/90 text-xs text-stone-700 space-y-1">
+              <p className="font-bold text-stone-950 text-sm">
+                SATYASAI NAVKISAN GREEN INDIA PRIVATE LIMITED
               </p>
               <p>CIN: U01110UP2018PTC101289 • GST: 09AAZCS8852J1Z6</p>
               <p>Registered Office: Lucknow, Uttar Pradesh, India</p>
-              <p>Phone: 07942637905</p>
-              <p>Email: navikisan@gmail.com</p>
+              <p>Phone: 07942637905 • Email: navikisan@gmail.com</p>
             </div>
           </section>
         </div>
