@@ -108,7 +108,7 @@ export default function CategoriesSection() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/90 text-emerald-950 text-xs font-bold uppercase tracking-wider mb-2 border border-emerald-200">
               <SparklesIcon className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Direct Nursery Catalog • Farm Gate Pricing</span>
+              <span>Direct Horticulture & Plantation Catalog • Farm Gate Pricing</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-editorial text-stone-950 font-normal tracking-tight">
               Select Botanical Category, <span className="italic font-normal text-emerald-950">Explore Varieties.</span>

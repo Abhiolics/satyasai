@@ -138,7 +138,7 @@ function PlantsCatalogContent() {
           <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-300 bg-white/10 backdrop-blur-md mb-2">
               <SparklesIcon className="w-3.5 h-3.5" />
-              Certified Nursery Strains
+              Certified Horticulture & Plantation Strains
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
               {currentCategoryInfo.name}

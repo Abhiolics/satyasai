@@ -25,6 +25,7 @@ import {
   MagnifyingGlassPlusIcon,
   DocumentCheckIcon,
   ArrowRightIcon,
+  TruckIcon,
 } from "@heroicons/react/24/outline";
 
 export default function AboutPage() {
@@ -90,7 +91,7 @@ export default function AboutPage() {
                 <span>Established 2018 • 8 Years of Agricultural Excellence</span>
               </div>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial text-stone-950 font-normal tracking-tight leading-[1.1]">
-                Pioneering Scientific Nursery <br className="hidden sm:inline" />
+                Pioneering Scientific Horticulture & Plantation <br className="hidden sm:inline" />
                 Cultivation in North India.
               </h1>
             </motion.div>
@@ -314,7 +315,24 @@ export default function AboutPage() {
                     </div>
                     <div className="text-sm font-semibold text-emerald-900 mt-1 flex items-center gap-1.5">
                       <BanknotesIcon className="w-4 h-4 text-emerald-700" />
-                      <span>₹ 0 - 40 L</span>
+                      <span>₹1.3 Crore</span>
+                    </div>
+                  </div>
+
+                  {/* Standard Delivery Timelines */}
+                  <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs sm:col-span-2">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-400">
+                      Standard Dispatch & Delivery Timelines
+                    </div>
+                    <div className="text-xs sm:text-sm font-semibold text-stone-900 mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <TruckIcon className="w-4 h-4 text-emerald-700" />
+                      <span>
+                        <strong className="text-emerald-900">Within UP:</strong> 2–3 days
+                      </span>
+                      <span className="text-stone-300 hidden sm:inline">•</span>
+                      <span>
+                        <strong className="text-emerald-900">Outside UP:</strong> approximately 1 week
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -416,7 +434,7 @@ export default function AboutPage() {
       <AboutJourneySection />
 
       {/* ========================================================================= */}
-      {/* SECTION 3: NURSERY INFRASTRUCTURE & FACILITY MOSAIC                       */}
+      {/* SECTION 3: HORTICULTURE & PLANTATION INFRASTRUCTURE & FACILITY MOSAIC   */}
       {/* ========================================================================= */}
       <section className="relative w-full py-16 sm:py-24 bg-white border-b border-stone-200/90 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -472,7 +490,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/images/category-mango.jpg"
-                  alt="Certified Stone Grafted Mango Nursery"
+                  alt="Certified Stone Grafted Mango Plantation"
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
@@ -526,7 +544,7 @@ export default function AboutPage() {
                 <strong className="text-stone-950">
                   Satyasai Navkisan Green India Private Limited
                 </strong>{" "}
-                was founded to solve a critical bottleneck in Indian agriculture: the rampant 30% to 40% field mortality caused by unhardened, field-dug nursery plants with damaged root balls.
+                was founded to solve a critical bottleneck in Indian agriculture: the rampant 30% to 40% field mortality caused by unhardened, field-dug plants with damaged root balls.
               </p>
 
               <p className="text-sm text-stone-600 leading-relaxed">

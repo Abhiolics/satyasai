@@ -32,7 +32,7 @@ export default function AboutJourneySection() {
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `🌿 *NURSERY APPOINTMENT & VISIT REQUEST*\n*Satyasai Navkisan Green India Private Limited*\n────────────────────────────\n👤 *Visitor Name:* ${visitorName.trim()}\n📞 *Phone:* ${visitorPhone.trim()}\n📅 *Preferred Visit Date:* ${visitorDate || "Earliest available"}\n🏡 *Plantation / Land Area:* ${visitorPlotSize || "Not specified"}\n\n📍 *Purpose:* Nursery Polyhouse Tour & Farm Project Advisory at Lucknow.\n\nPlease confirm agronomist availability and Google Map location pin.`;
+    const msg = `🌿 *HORTICULTURE & PLANTATION APPOINTMENT & VISIT REQUEST*\n*Satyasai Navkisan Green India Private Limited*\n────────────────────────────\n👤 *Visitor Name:* ${visitorName.trim()}\n📞 *Phone:* ${visitorPhone.trim()}\n📅 *Preferred Visit Date:* ${visitorDate || "Earliest available"}\n🏡 *Plantation / Land Area:* ${visitorPlotSize || "Not specified"}\n\n📍 *Purpose:* Horticulture & Plantation Tour & Farm Project Advisory at Lucknow.\n\nPlease confirm agronomist availability and Google Map location pin.`;
     const url = `https://wa.me/919956879905?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
     setIsAppointmentModalOpen(false);
@@ -104,7 +104,7 @@ export default function AboutJourneySection() {
             <div className="mt-6 relative w-full h-44 sm:h-48 rounded-3xl overflow-hidden border-2 border-white/90 shadow-sm group-hover:shadow-md transition-all">
               <Image
                 src="/images/tissue-culture.jpg"
-                alt="Elite strain propagation at Satyasai Navkisan Nursery"
+                alt="Elite strain propagation at Satyasai Navkisan Plantation"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -197,7 +197,7 @@ export default function AboutJourneySection() {
           </div>
 
           {/* ---------------------------------------------------- */}
-          {/* CARD 3: TALL BUTTER YELLOW SQUIRCLE (Nursery Solutions) */}
+          {/* CARD 3: TALL BUTTER YELLOW SQUIRCLE (Horticulture & Plantation Solutions) */}
           {/* ---------------------------------------------------- */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -213,7 +213,7 @@ export default function AboutJourneySection() {
                 Providing <br />
                 personalized <br />
                 and effective <br />
-                nursery <br />
+                horticulture & plantation <br />
                 solutions.
               </h3>
               <p className="text-xs text-stone-700 font-medium mt-2 leading-relaxed">
@@ -225,7 +225,7 @@ export default function AboutJourneySection() {
             <div className="mt-6 relative w-full h-44 sm:h-48 rounded-3xl overflow-hidden border-2 border-white/90 shadow-sm group-hover:shadow-md transition-all">
               <Image
                 src="/images/greenhouse-hero.jpg"
-                alt="Personalized nursery greenhouse advisory and blueprints"
+                alt="Personalized plantation greenhouse advisory and blueprints"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -281,7 +281,7 @@ export default function AboutJourneySection() {
           </motion.div>
         </div>
 
-        {/* Bottom Nursery Assurance Ribbon with Motion */}
+        {/* Bottom Assurance Ribbon with Motion */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -340,12 +340,12 @@ export default function AboutJourneySection() {
 
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-950 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  Nursery Tour & Advisory
+                  Horticulture & Plantation Tour & Advisory
                 </span>
               </div>
 
               <h3 className="text-2xl font-editorial font-bold text-stone-950 tracking-tight">
-                Book a Nursery Appointment
+                Book a Horticulture & Plantation Appointment
               </h3>
               <p className="text-xs text-stone-600 mt-1 leading-relaxed">
                 Schedule an in-person tour of our automated polyhouses in Lucknow or book a 1-on-1 agronomy consultation for your plantation project.
@@ -428,7 +428,7 @@ export default function AboutJourneySection() {
                     <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" />
                   </button>
                   <p className="text-[10px] text-center text-stone-500 mt-2">
-                    Direct connection with Satyasai Navkisan Nursery Desk (+91 99568 79905).
+                    Direct connection with Satyasai Navkisan Horticulture & Plantation Desk (+91 99568 79905 / +91 96444 15555).
                   </p>
                 </div>
               </form>

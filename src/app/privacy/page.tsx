@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               2. Information We Collect
             </h2>
             <p className="mb-3">
-              We collect information that you voluntarily provide when interacting with our nursery services, such as:
+              We collect information that you voluntarily provide when interacting with our horticulture & plantation services, such as:
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <strong>Logistics Partners:</strong> Delivery details (name, phone number, and drop-off coordinates) may be shared with trusted transport carriers solely to execute nursery plant deliveries.
+                <strong>Logistics Partners:</strong> Delivery details (name, phone number, and drop-off coordinates) may be shared with trusted transport carriers solely to execute horticulture & plantation deliveries.
               </li>
               <li>
                 <strong>Legal Compliance:</strong> We may disclose information if required to comply with applicable Indian laws, tax regulations, or lawful court directives.
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
               </p>
               <p>CIN: U01110UP2018PTC101289 • GST: 09AAZCS8852J1Z6</p>
               <p>Registered Office: Lucknow, Uttar Pradesh, India</p>
-              <p>Phone: +91 99568 79905</p>
+              <p>Phone: +91 99568 79905 / +91 96444 15555</p>
               <p>Email: navikisan@gmail.com</p>
             </div>
           </section>

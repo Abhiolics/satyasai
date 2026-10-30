@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Cancellation, Return & Refund Policy | Satyasai Navkisan Green India Private Limited",
   description:
-    "Transparent return, transit damage claims, cancellation, and refund policies for certified nursery saplings and agricultural plant orders.",
+    "Transparent return, transit damage claims, cancellation, and refund policies for certified horticulture saplings and agricultural plant orders.",
 };
 
 export default function RefundPolicyPage() {
@@ -52,10 +52,10 @@ export default function RefundPolicyPage() {
             <div className="space-y-3">
               <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
                 <p className="font-semibold text-stone-950 mb-1">
-                  A. Prior to Nursery Extraction & Vehicle Loading (Full Refund / Rescheduling)
+                  A. Prior to Plantation Bed Extraction & Vehicle Loading (Full Refund / Rescheduling)
                 </p>
                 <p className="text-xs sm:text-sm text-stone-600">
-                  You may cancel or postpone your order at any time before saplings have been pulled from growing beds, bundled, and loaded onto the dispatch truck. Upon receipt of written or verbal cancellation via phone/WhatsApp, 100% of any advance payment will be refunded within 5–7 business days or credited toward future nursery inventory.
+                  You may cancel or postpone your order at any time before saplings have been pulled from growing beds, bundled, and loaded onto the dispatch truck. Upon receipt of written or verbal cancellation via phone/WhatsApp, 100% of any advance payment will be refunded within 5–7 business days or credited toward future plantation inventory.
                 </p>
               </div>
 
@@ -75,7 +75,7 @@ export default function RefundPolicyPage() {
               3. Transit Damage & Dead-On-Arrival (DOA) Guarantee
             </h2>
             <p className="mb-3">
-              We stand firmly behind the health of every specimen dispatched from our Mohanlalganj, Lucknow nursery estate. If plants arrive with severe transit-induced damage:
+              We stand firmly behind the health of every specimen dispatched from our Mohanlalganj, Lucknow horticulture estate. If plants arrive with severe transit-induced damage:
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -144,7 +144,7 @@ export default function RefundPolicyPage() {
             <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-200/70 text-emerald-950 space-y-1">
               <p className="font-semibold">Claims & Quality Assurance Desk</p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
-              <p>Direct Call / WhatsApp: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
+              <p>Direct Call: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a> • <a href="tel:+91 96444 15555" className="font-bold underline">+91 96444 15555</a></p>
               <p>Operating Hours: Monday – Saturday (8:00 AM – 7:00 PM IST)</p>
             </div>
           </section>

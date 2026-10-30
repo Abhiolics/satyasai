@@ -75,7 +75,7 @@ export default function PlantDetailModal({
 
   const handleWhatsAppEnquiry = () => {
     const message = encodeURIComponent(
-      `Hello Satyasai Navkisan Nursery,\n\nI am interested in ordering:\n• Plant: ${product.title}\n• Variety: ${product.variety}\n• Quantity: ${quantity} ${product.priceUnit || "Pieces"}\n• Price: ₹${product.price} / ${product.priceUnit || "Piece"}\n\nPlease share availability and freight details to my location.`
+      `Hello Satyasai Navkisan Horticulture & Plantation,\n\nI am interested in ordering:\n• Plant: ${product.title}\n• Variety: ${product.variety}\n• Quantity: ${quantity} ${product.priceUnit || "Pieces"}\n• Price: ₹${product.price} / ${product.priceUnit || "Piece"}\n\nPlease share availability and freight details to my location.`
     );
     window.open(`https://wa.me/919956879905?text=${message}`, "_blank");
   };
@@ -195,7 +195,7 @@ export default function PlantDetailModal({
                   <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
                     <TruckIcon className="w-4 h-4" />
                   </span>
-                  <span>{product.bulkAvailability || "Available in Bulk Quantity (Direct Farm Gate Delivery)"}</span>
+                  <span>{product.bulkAvailability || "Available in Bulk Quantity"} • <strong className="text-emerald-900 font-semibold">Delivery:</strong> Within UP: 2–3 days | Outside UP: ~1 week</span>
                 </div>
               </div>
 

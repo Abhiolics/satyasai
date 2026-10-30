@@ -11,16 +11,16 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Satyasai Navkisan Green India | Elite Botanical Nursery & Fruit Plant Grafts",
+  title: "Satyasai Navkisan Green India | Elite Horticulture & Plantation & Fruit Plant Grafts",
   description:
-    "India's premier certified botanical nursery & agro-forestry estate. High-yielding grafted Mango, Taiwan Pink Guava, Tissue-Cultured Burma Teak, and elite horticulture saplings.",
+    "India's premier certified horticulture & plantation agro-forestry estate. High-yielding grafted Mango, Taiwan Pink Guava, Tissue-Cultured Burma Teak, and elite horticulture saplings.",
   keywords: [
     "Satyasai Navkisan Green India",
-    "fruit plants nursery",
+    "fruit plants horticulture",
     "mango plants graft",
     "guava plants Taiwan Pink",
     "teak plants tissue culture",
-    "certified nursery India",
+    "certified plantation India",
     "agro forestry plants",
   ],
   authors: [{ name: "Satyasai Navkisan Green India Private Limited" }],

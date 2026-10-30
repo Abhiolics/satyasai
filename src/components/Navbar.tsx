@@ -259,7 +259,7 @@ export default function Navbar({ }: NavbarProps = {}) {
             <button
               type="button"
               onClick={openCart}
-              aria-label="Open Nursery Cart"
+              aria-label="Open Cart"
               className="relative inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-stone-100 hover:bg-emerald-50 text-stone-800 hover:text-emerald-900 border border-stone-200/90 transition-all active:scale-95 cursor-pointer"
             >
               <ShoppingCartIcon className="w-4 h-4 text-emerald-800" />

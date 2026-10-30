@@ -176,7 +176,7 @@ export default function TermsPage() {
               <span>7. No Buy-Back Policy</span>
             </h2>
             <p className="text-stone-700 pl-7">
-              The company will not buy the crop against purchase (<strong>Strictly No Buy-Back Policy</strong>). The company acts solely as a certified nursery producer and horticultural supplier.
+              The company will not buy the crop against purchase (<strong>Strictly No Buy-Back Policy</strong>). The company acts solely as a certified horticulture & plantation producer and supplier.
             </p>
           </section>
 
@@ -232,7 +232,7 @@ export default function TermsPage() {
               </p>
               <p>CIN: U01110UP2018PTC101289 • GST: 09AAZCS8852J1Z6</p>
               <p>Registered Office: Lucknow, Uttar Pradesh, India</p>
-              <p>Phone: +91 99568 79905 • Email: navikisan@gmail.com</p>
+              <p>Phone: +91 99568 79905 / +91 96444 15555 • Email: navikisan@gmail.com</p>
             </div>
           </section>
         </div>

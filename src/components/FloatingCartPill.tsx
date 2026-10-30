@@ -17,7 +17,7 @@ export default function FloatingCartPill() {
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 80, opacity: 0, scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
-        aria-label="Nursery Cart Summary"
+        aria-label="Horticulture & Plantation Cart Summary"
         className="fixed z-40 bottom-20 sm:bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 max-w-[94vw] pointer-events-auto"
       >
         <button

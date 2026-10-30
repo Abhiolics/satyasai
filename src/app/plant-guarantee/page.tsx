@@ -73,7 +73,7 @@ export default function PlantGuaranteePage() {
               3. Graft Union Health & Physical Quality Standards
             </h2>
             <p className="mb-3">
-              Prior to clearance for client delivery, each batch must satisfy strict physical nursery benchmarks:
+              Prior to clearance for client delivery, each batch must satisfy strict physical horticulture benchmarks:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
               <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
@@ -86,7 +86,7 @@ export default function PlantGuaranteePage() {
               </div>
               <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
                 <span className="font-semibold text-stone-950 block mb-1">Age & Height Specifications</span>
-                <p className="text-stone-600">6 to 14 months nursery-hardened specimens measuring 70cm to 130cm, hardened under open sunlight before transport.</p>
+                <p className="text-stone-600">6 to 14 months hardened specimens measuring 70cm to 130cm, hardened under open sunlight before transport.</p>
               </div>
               <div className="p-3.5 bg-stone-50 rounded-xl border border-stone-200">
                 <span className="font-semibold text-stone-950 block mb-1">Phytosanitary Clearance</span>
@@ -120,7 +120,7 @@ export default function PlantGuaranteePage() {
               5. Ongoing Agronomy Support & Grower Advisory
             </h2>
             <p>
-              We believe a nursery&apos;s responsibility extends far beyond the farm gate. All growers and orchardists ordering from Satyasai Navkisan receive direct seasonal advisory support covering pit excavation dimensions (1m x 1m x 1m), organic FYM soil preparation, drip irrigation scheduling, micronutrient foliar sprays, and scientific formative canopy pruning.
+              We believe a horticulture & plantation partner&apos;s responsibility extends far beyond the farm gate. All growers and orchardists ordering from Satyasai Navkisan receive direct seasonal advisory support covering pit excavation dimensions (1m x 1m x 1m), organic FYM soil preparation, drip irrigation scheduling, micronutrient foliar sprays, and scientific formative canopy pruning.
             </p>
           </section>
 
@@ -135,7 +135,7 @@ export default function PlantGuaranteePage() {
               <p className="font-semibold">Botanical Certification Office</p>
               <p>Satyasai Navkisan Green India Private Limited</p>
               <p>Estate: Mohanlalganj / Lucknow, Uttar Pradesh - India</p>
-              <p>Horticulture Desk: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
+              <p>Horticulture Desk: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a> • <a href="tel:+91 96444 15555" className="font-bold underline">+91 96444 15555</a></p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
             </div>
           </section>

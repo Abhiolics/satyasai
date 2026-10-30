@@ -103,10 +103,10 @@ export const PLANT_VARIETIES: Record<string, PlantVariety> = {
   },
   nursery: {
     id: "nursery",
-    name: "Navkisan Micropropagation Nursery",
+    name: "Navkisan Micropropagation & Horticulture Plantation",
     botanicalName: "Biotech Propagation & Rootstock Hardening",
     category: "nursery",
-    badge: "Hi-Tech Hardened Nursery",
+    badge: "Hi-Tech Hardened Horticulture & Plantation",
     image: "/images/tissue-culture.jpg",
     shortDesc: "Climate-controlled polyhouses and mist chambers preparing virus-indexed saplings with secondary root hardening.",
     fullDesc: "Spanning over 45 acres of dedicated mother blocks and automated mist chambers, Satyasai Navkisan Green India operates with state-of-the-art horticultural protocols. Every batch undergoes mycorrhizal bio-priming and strict phytosanitary inspection before farm dispatch.",

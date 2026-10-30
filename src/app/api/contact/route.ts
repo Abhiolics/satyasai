@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       interest: interest || "General Inquiry",
       acreage: acreage || "Not specified",
       timestamp,
-      subject: `New Plantation Requirement from ${name} - Satyasai Navkisan Nursery`,
+      subject: `New Plantation Requirement from ${name} - Satyasai Navkisan Horticulture & Plantation`,
     };
 
     console.log(`[CONTACT QUERY RECEIVED] Routing to ${recipientEmail}:`, queryPayload);

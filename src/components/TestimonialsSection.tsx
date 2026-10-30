@@ -103,12 +103,12 @@ const TESTIMONIALS: Testimonial[] = [
       {
         title: "2. Surviving the Severe Lucknow Winter Cold Wave",
         content:
-          "We followed the pit spacing and farmyard manure guidelines provided by their Lucknow office. Despite the severe cold wave and dense fog in Lucknow during December–January, survival exceeded 99.2%. Because the nursery conducts automated polyhouse micro-mist hardening prior to dispatch, our saplings showed zero transplant shock and resumed leaf flushing immediately with spring warming.",
+          "We followed the pit spacing and farmyard manure guidelines provided by their Lucknow office. Despite the severe cold wave and dense fog in Lucknow during December–January, survival exceeded 99.2%. Because our automated polyhouse micro-mist hardening is conducted prior to dispatch, our saplings showed zero transplant shock and resumed leaf flushing immediately with spring warming.",
       },
       {
         title: "3. Season 2 Flowering & Agronomy Support",
         content:
-          "By the second season, vegetative growth was astonishingly uniform. We recorded heavy, healthy panicle flowering across the entire 14-acre block. Their senior agronomist visited our orchard twice to guide us on canopy pruning, blossom protection, and micronutrient spray. Satyasai Navkisan is hands down the most dependable nursery in Uttar Pradesh.",
+          "By the second season, vegetative growth was astonishingly uniform. We recorded heavy, healthy panicle flowering across the entire 14-acre block. Their senior agronomist visited our orchard twice to guide us on canopy pruning, blossom protection, and micronutrient spray. Satyasai Navkisan is hands down the most dependable horticulture & plantation partner in Uttar Pradesh.",
       },
     ],
     nurseryResponse: {
@@ -201,7 +201,7 @@ const TESTIMONIALS: Testimonial[] = [
       },
       {
         src: "/images/tissue-culture.jpg",
-        caption: "Automated climate-controlled hardening bays at Satyasai nursery",
+        caption: "Automated climate-controlled hardening bays at Satyasai horticulture estate",
       },
     ],
   },
@@ -214,10 +214,10 @@ const TESTIMONIALS: Testimonial[] = [
     rating: "5.0",
     reviewsCount: "42 REVIEWS",
     reviewTitle:
-      "Zero Transplant Shock & 100% Survival — True Polyhouse Bio-Hardened Nursery Stock",
+      "Zero Transplant Shock & 100% Survival — True Polyhouse Bio-Hardened Horticulture Stock",
     reviewDate: "January 22, 2025",
     orderId: "SNK-2023-GOM7721",
-    variety: "Exotic Fruit Nursery Stock (Mango, Guava & Citrus)",
+    variety: "Exotic Fruit Horticulture Stock (Mango, Guava & Citrus)",
     quantity: "950 Multi-Variety Saplings",
     spacing: "12 × 12 ft Organic Layout",
     quote:
@@ -242,9 +242,9 @@ const TESTIMONIALS: Testimonial[] = [
     ],
     detailedSections: [
       {
-        title: "1. Certified Disease-Free Nursery Stock",
+        title: "1. Certified Disease-Free Horticulture Stock",
         content:
-          "As an organic orchard grower supplying certified produce, nursery stock certification and disease freedom are non-negotiable. Many local nurseries sell field-dug saplings with damaged taproots and soil-borne fungal pathogens. Satyasai Navkisan's automated polyhouse hardening facility in Uttar Pradesh guarantees virus-indexed rootstocks grown in sterilized media.",
+          "As an organic orchard grower supplying certified produce, plantation stock certification and disease freedom are non-negotiable. Many local suppliers sell field-dug saplings with damaged taproots and soil-borne fungal pathogens. Satyasai Navkisan's automated polyhouse hardening facility in Uttar Pradesh guarantees virus-indexed rootstocks grown in sterilized media.",
       },
       {
         title: "2. Transplantation in Kakori & Gomti Nagar Belt",
@@ -339,7 +339,7 @@ const TESTIMONIALS: Testimonial[] = [
     gallery: [
       {
         src: "/images/teak-sapling.jpg",
-        caption: "Burmese clonal tissue-culture teak saplings in nursery secondary hardening",
+        caption: "Burmese clonal tissue-culture teak saplings in secondary hardening",
       },
       {
         src: "/images/hero-estate.jpg",
@@ -390,7 +390,7 @@ const TESTIMONIALS: Testimonial[] = [
       {
         title: "1. Mixed Fruit Plantation Setup",
         content:
-          "We ordered a mixed consignment of all-season Baramasi mangoes and Kagzi limes for our 10-acre plot near Chinhat. Because our goal was regular year-round cash flow, nursery reliability was vital. Every crate arrived in peak condition with damp root balls, clean graft unions, and zero mechanical damage.",
+          "We ordered a mixed consignment of all-season Baramasi mangoes and Kagzi limes for our 10-acre plot near Chinhat. Because our goal was regular year-round cash flow, plantation stock reliability was vital. Every crate arrived in peak condition with damp root balls, clean graft unions, and zero mechanical damage.",
       },
       {
         title: "2. Plantation Pit Spacing & Planting Support",

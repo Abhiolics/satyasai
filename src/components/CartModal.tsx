@@ -17,6 +17,7 @@ import {
   CheckCircleIcon,
   ArrowRightIcon,
   ShieldCheckIcon,
+  TruckIcon,
 } from "@heroicons/react/24/outline";
 import { useCart } from "@/context/CartContext";
 
@@ -107,10 +108,10 @@ export default function CartModal() {
       )
       .join("\n\n");
 
-    const message = `🌿 *NEW NURSERY ORDER INQUIRY*\n*Satyasai Navkisan Green India Private Limited*\nLucknow, Uttar Pradesh | GST: 09AAZCS8852J1Z6\n────────────────────────────\n👤 *CUSTOMER DETAILS:*\n• *Name:* ${customerName.trim() || "Customer"}\n• *Delivery Location:* ${customerLocation.trim() || "Lucknow, UP"}\n• *Phone:* ${customerPhone.trim() || "Not provided"}${farmAcreage.trim() ? `\n• *Plantation Size:* ${farmAcreage.trim()}` : ""
-      }\n\n📦 *ORDERED NURSERY STOCK:*\n${itemsSummary}\n\n────────────────────────────\n💰 *ESTIMATED ORDER TOTAL:* ₹${totalCartAmount.toLocaleString(
+    const message = `🌿 *NEW HORTICULTURE & PLANTATION ORDER INQUIRY*\n*Satyasai Navkisan Green India Private Limited*\nLucknow, Uttar Pradesh | GST: 09AAZCS8852J1Z6\n────────────────────────────\n👤 *CUSTOMER DETAILS:*\n• *Name:* ${customerName.trim() || "Customer"}\n• *Delivery Location:* ${customerLocation.trim() || "Lucknow, UP"}\n• *Phone:* ${customerPhone.trim() || "Not provided"}${farmAcreage.trim() ? `\n• *Plantation Size:* ${farmAcreage.trim()}` : ""
+      }\n\n📦 *ORDERED PLANTATION STOCK:*\n${itemsSummary}\n\n────────────────────────────\n💰 *ESTIMATED ORDER TOTAL:* ₹${totalCartAmount.toLocaleString(
         "en-IN"
-      )} (${totalCartItems} total plants/units)\n🌱 *Delivery Mode:* Direct Nursery Dispatch / Farm Gate Delivery in UP\n\nPlease confirm sapling availability, dispatch timeline, and advance invoice details.`;
+      )} (${totalCartItems} total plants/units)\n🚚 *Delivery:* Within UP: 2–3 days | Outside UP: approximately 1 week\n\nPlease confirm sapling availability, dispatch timeline, and advance invoice details.`;
 
     const whatsappUrl = `https://wa.me/919956879905?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
@@ -155,7 +156,7 @@ export default function CartModal() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-base sm:text-lg font-bold font-sans text-stone-950 tracking-tight">
-                      Nursery Order Cart
+                      Plantation Order Cart
                     </h3>
                     {cart.length > 0 && (
                       <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200">
@@ -166,7 +167,7 @@ export default function CartModal() {
                   <p className="text-[11px] sm:text-xs text-stone-500">
                     {totalCartItems > 0
                       ? `${totalCartItems.toLocaleString("en-IN")} plants selected • Direct Farm Gate Rates`
-                      : "Add healthy nursery saplings to checkout"}
+                      : "Add healthy plantation saplings to checkout"}
                   </p>
                 </div>
               </div>
@@ -201,17 +202,17 @@ export default function CartModal() {
                     <ShoppingCartIcon className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-600/70" />
                   </div>
                   <h4 className="text-base sm:text-lg font-bold text-stone-900">
-                    Your nursery cart is empty
+                    Your order cart is empty
                   </h4>
                   <p className="text-xs sm:text-sm text-stone-500 max-w-sm mx-auto mt-1 leading-relaxed">
-                    Explore our certified grafted fruit saplings, tissue-cultured teak, and high-yield varieties to place your nursery booking.
+                    Explore our certified grafted fruit saplings, tissue-cultured teak, and high-yield varieties to place your plantation booking.
                   </p>
                   <button
                     type="button"
                     onClick={closeCart}
                     className="mt-5 px-6 py-2.5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white text-xs sm:text-sm font-semibold shadow-md shadow-emerald-950/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                   >
-                    Browse Nursery Catalog
+                    Browse Botanical Catalog
                   </button>
                 </div>
               ) : (
@@ -308,7 +309,7 @@ export default function CartModal() {
                       </span>
                     </div>
                     <div className="flex justify-between text-stone-600">
-                      <span>Transit Nursery Packaging:</span>
+                      <span>Transit Protective Packaging:</span>
                       <span className="font-semibold text-emerald-800 flex items-center gap-1">
                         <CheckCircleIcon className="w-3.5 h-3.5 text-emerald-600" />
                         <span>Shockproof Crates Included</span>
@@ -412,6 +413,14 @@ export default function CartModal() {
                       </div>
                     </div>
 
+                    {/* Delivery Timeline Notice */}
+                    <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-xs text-stone-700 flex items-center gap-2">
+                      <TruckIcon className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <div>
+                        <span className="font-bold text-stone-900">Delivery:</span> Within UP: 2–3 days • Outside UP: approximately 1 week
+                      </div>
+                    </div>
+
                     {/* CONFIRM ORDER ON WHATSAPP BUTTON (+91 99568 79905) */}
                     <div className="pt-2">
                       <button
@@ -426,7 +435,7 @@ export default function CartModal() {
 
                       <p className="text-[11px] text-center text-stone-500 mt-2 flex items-center justify-center gap-1.5">
                         <ShieldCheckIcon className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Direct official booking sent to Satyasai Navkisan Nursery Desk.</span>
+                        <span>Direct official booking sent to Satyasai Navkisan Horticulture & Plantation Desk.</span>
                       </p>
                     </div>
                   </form>

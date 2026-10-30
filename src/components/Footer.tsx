@@ -51,7 +51,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"
                     >
-                      Estate & Nursery Photos
+                      Estate & Plantation Photos
                     </a>
                   </li>
                   <li>
@@ -158,7 +158,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"
                   >
-                    Fruit Plant Nursery
+                    Fruit Plant Horticulture
                   </a>
                 </li>
                 <li>
@@ -233,7 +233,7 @@ export default function Footer() {
             </div>
 
             {/* ---------------------------------------------------- */}
-            {/* COLUMN 3: Nursery Policies & Quality Assurance      */}
+            {/* COLUMN 3: Policies & Quality Assurance         */}
             {/* ---------------------------------------------------- */}
             <div className="lg:px-6 lg:border-l lg:border-emerald-800/60">
               <h4 className="font-semibold text-emerald-200 text-sm tracking-wide mb-4 uppercase">
@@ -307,6 +307,12 @@ export default function Footer() {
                     +91 99568 79905
                   </a>
                   <a
+                    href="tel:+919644415555"
+                    className="text-base font-medium text-emerald-100 hover:text-white transition-colors block"
+                  >
+                    +91 96444 15555
+                  </a>
+                  <a
                     href="mailto:navikisan@gmail.com"
                     className="text-xs font-medium text-emerald-200/90 hover:text-white transition-colors block"
                   >
@@ -314,14 +320,17 @@ export default function Footer() {
                   </a>
                 </div>
 
-                {/* Address & GST */}
-                <div className="text-xs text-emerald-200/80 space-y-1 font-light leading-relaxed">
+                {/* Address, GST & Delivery */}
+                <div className="text-xs text-emerald-200/80 space-y-1.5 font-light leading-relaxed">
                   <p className="font-semibold text-emerald-100">
                     Satyasai Navkisan Green India Private Limited
                   </p>
                   <p>Lucknow, Uttar Pradesh - India</p>
-                  <p className="text-[11px] text-emerald-200/80 pt-1">
-                    GST: 09AAZCS8852J1Z6
+                  <p className="text-[11px] text-emerald-200/90 pt-0.5">
+                    GST: 09AAZCS8852J1Z6 • Annual Turnover: <strong className="text-emerald-100 font-semibold">₹1.3 Crore</strong>
+                  </p>
+                  <p className="text-[11px] text-emerald-300 font-medium pt-0.5">
+                    🚚 Delivery: Within UP: 2–3 days | Outside UP: approximately 1 week
                   </p>
                 </div>
               </div>

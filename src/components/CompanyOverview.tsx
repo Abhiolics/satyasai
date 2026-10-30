@@ -13,6 +13,7 @@ import {
   ArrowTopRightOnSquareIcon,
   PhoneIcon,
   EnvelopeIcon,
+  TruckIcon,
   ShieldCheckIcon as ShieldCheckOutline,
 } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
@@ -74,7 +75,7 @@ export default function CompanyOverview() {
               <div className="relative">
                 <div className="text-[11px] font-bold text-emerald-850 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                   <ShieldCheckIcon className="w-4 h-4 text-emerald-700" />
-                  <span>Wholesale Nursery Quotes</span>
+                  <span>Wholesale Horticulture & Plantation Quotes</span>
                 </div>
 
                 <h3 className="text-base sm:text-lg font-bold font-sans text-stone-950 tracking-tight">
@@ -86,31 +87,37 @@ export default function CompanyOverview() {
                 </p>
 
                 <div className="mt-5 flex flex-wrap items-center gap-2.5">
-                  {/* <a
-                    href="https://www.saigreenindia.in/enquiry.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-all hover:scale-[1.02] active:scale-95"
-                  >
-                    <span>Contact Us</span>
-                    
-                  </a> */}
-
                   <a
                     href="tel:+91 99568 79905"
-                    className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
+                    className="py-2.5 px-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <PhoneIcon className="w-3.5 h-3.5 text-emerald-800" />
-                    <span>Call Desk</span>
+                    <span>+91 99568 79905</span>
+                  </a>
+
+                  <a
+                    href="tel:+91 96444 15555"
+                    className="py-2.5 px-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
+                  >
+                    <PhoneIcon className="w-3.5 h-3.5 text-emerald-800" />
+                    <span>+91 96444 15555</span>
                   </a>
 
                   <a
                     href="mailto:navikisan@gmail.com"
-                    className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
+                    className="py-2.5 px-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <EnvelopeIcon className="w-3.5 h-3.5 text-emerald-800" />
                     <span>Email</span>
                   </a>
+                </div>
+
+                {/* Delivery Timeline Notice */}
+                <div className="mt-4 pt-3 border-t border-stone-100 flex items-center gap-2 text-xs text-stone-600">
+                  <TruckIcon className="w-4 h-4 text-emerald-700 shrink-0" />
+                  <span>
+                    <strong>Delivery:</strong> Within UP: 2–3 days • Outside UP: approximately 1 week
+                  </span>
                 </div>
               </div>
             </div>
@@ -181,7 +188,7 @@ export default function CompanyOverview() {
                     </span>
                   </div>
                   <div className="text-sm font-bold text-stone-950 tracking-tight">
-                    ~ 40 L
+                    ₹1.3 Crore
                   </div>
                 </div>
 
@@ -268,6 +275,25 @@ export default function CompanyOverview() {
                       </>
                     )}
                   </button>
+                </div>
+
+                {/* 9. Delivery Timelines */}
+                <div className="p-3.5 rounded-2xl bg-stone-50/70 border border-stone-200/70 hover:bg-white hover:border-emerald-300 transition-all sm:col-span-2">
+                  <div className="flex items-center gap-2 text-stone-400 mb-1">
+                    <TruckIcon className="w-4 h-4 text-emerald-800" />
+                    <span className="text-[10.5px] font-bold uppercase tracking-wider">
+                      Delivery Timelines
+                    </span>
+                  </div>
+                  <div className="text-xs sm:text-sm font-medium text-stone-900 tracking-tight flex flex-wrap items-center gap-x-4 gap-y-1">
+                    <span>
+                      <strong className="text-emerald-900 font-bold">Within UP:</strong> 2–3 days
+                    </span>
+                    <span className="text-stone-300 hidden sm:inline">•</span>
+                    <span>
+                      <strong className="text-emerald-900 font-bold">Outside UP:</strong> approximately 1 week
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

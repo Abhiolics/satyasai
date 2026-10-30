@@ -186,12 +186,20 @@ export default function ContactPage() {
                   <div className="text-xs sm:text-sm text-stone-400 font-normal">
                     Phone:
                   </div>
-                  <a
-                    href="tel:+91 99568 79905"
-                    className="text-base sm:text-lg font-semibold text-stone-900 hover:text-emerald-950 transition-colors mt-1 block"
-                  >
-                    +91 99568 79905
-                  </a>
+                  <div className="space-y-1 mt-1">
+                    <a
+                      href="tel:+91 99568 79905"
+                      className="text-base sm:text-lg font-semibold text-stone-900 hover:text-emerald-950 transition-colors block"
+                    >
+                      +91 99568 79905
+                    </a>
+                    <a
+                      href="tel:+91 96444 15555"
+                      className="text-base sm:text-lg font-semibold text-stone-900 hover:text-emerald-950 transition-colors block"
+                    >
+                      +91 96444 15555
+                    </a>
+                  </div>
                 </div>
 
                 {/* Address Item with Google Maps Link */}
@@ -222,6 +230,17 @@ export default function ContactPage() {
                     <br />
                     India
                   </a>
+                </div>
+
+                {/* Delivery Timelines Box */}
+                <div className="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 text-xs text-stone-700">
+                  <div className="font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
+                    <span>🚚 Dispatch & Delivery Coverage</span>
+                  </div>
+                  <p className="text-stone-600">
+                    <strong className="text-stone-900">Within UP:</strong> 2–3 days<br />
+                    <strong className="text-stone-900">Outside UP:</strong> approximately 1 week
+                  </p>
                 </div>
 
                 {/* Follow Us Social Icons */}
@@ -301,7 +320,7 @@ export default function ContactPage() {
                       <strong className="text-stone-900 font-mono">
                         navikisan@gmail.com
                       </strong>
-                      . Our Lucknow nursery team will call you on{" "}
+                      . Our Lucknow horticulture & plantation team will call you on{" "}
                       <span className="font-mono text-stone-900 font-semibold">{formData.number}</span> shortly.
                     </p>
 

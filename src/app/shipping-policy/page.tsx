@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Shipping & Delivery Policy | Satyasai Navkisan Green India Private Limited",
   description:
-    "Comprehensive shipping, packaging, and logistics policy for live nursery saplings, grafted fruit plants, and agro-forestry species from Satyasai Navkisan Green India.",
+    "Comprehensive shipping, packaging, and logistics policy for live horticulture saplings, grafted fruit plants, and agro-forestry species from Satyasai Navkisan Green India.",
 };
 
 export default function ShippingPolicyPage() {
@@ -41,7 +41,7 @@ export default function ShippingPolicyPage() {
               1. Overview & Live Biological Logistics
             </h2>
             <p>
-              At Satyasai Navkisan Green India Private Limited (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;), we take extraordinary care in transporting live botanical nursery stock, high-density fruit grafts, and tissue-cultured timber saplings. Because living plants require continuous aeration, root-ball hydration, and physical stability during transit, all logistics are handled under specialized horticultural shipping protocols.
+              At Satyasai Navkisan Green India Private Limited (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;), we take extraordinary care in transporting live botanical horticulture & plantation stock, high-density fruit grafts, and tissue-cultured timber saplings. Because living plants require continuous aeration, root-ball hydration, and physical stability during transit, all logistics are handled under specialized horticultural shipping protocols.
             </p>
           </section>
 
@@ -50,7 +50,7 @@ export default function ShippingPolicyPage() {
               2. Packaging & Rootstock Hydration Protocols
             </h2>
             <p className="mb-3">
-              To guarantee maximum field survival and eliminate transit desiccation shock, every consignment undergoes rigorous nursery dispatch preparation:
+              To guarantee maximum field survival and eliminate transit desiccation shock, every consignment undergoes rigorous horticulture dispatch preparation:
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -69,6 +69,13 @@ export default function ShippingPolicyPage() {
             <h2 className="text-lg font-bold text-stone-950 mb-3">
               3. Dispatch Modes & Delivery Timelines
             </h2>
+            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200/80 mb-4 text-emerald-950">
+              <span className="font-bold block text-sm mb-1">Standard Delivery Timelines:</span>
+              <p className="text-xs sm:text-sm">
+                • <strong>Within UP:</strong> 2–3 days<br />
+                • <strong>Outside UP:</strong> approximately 1 week
+              </p>
+            </div>
             <p className="mb-3">
               We offer flexible shipping arrangements tailored to consignment size, destination, and grower requirements:
             </p>
@@ -84,18 +91,18 @@ export default function ShippingPolicyPage() {
                 <tbody className="divide-y divide-stone-200">
                   <tr>
                     <td className="p-3 font-medium text-stone-950 border-r border-stone-200">Farm-Gate Self Pickup</td>
-                    <td className="p-3 border-r border-stone-200">Lucknow Estate Nursery (Mohanlalganj)</td>
+                    <td className="p-3 border-r border-stone-200">Lucknow Estate Plantation (Mohanlalganj)</td>
                     <td className="p-3">Same Day / Immediate Loading upon inspection</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-medium text-stone-950 border-r border-stone-200">Dedicated Agri-Truck / Tempo</td>
-                    <td className="p-3 border-r border-stone-200">Uttar Pradesh, Delhi NCR & Neighboring States</td>
-                    <td className="p-3">24 to 48 Hours</td>
+                    <td className="p-3 border-r border-stone-200">Within Uttar Pradesh (UP) & NCR</td>
+                    <td className="p-3 font-semibold text-emerald-950">2–3 Days</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-medium text-stone-950 border-r border-stone-200">Interstate Long-Haul Logistics</td>
-                    <td className="p-3 border-r border-stone-200">Central, Western, Southern & Eastern India</td>
-                    <td className="p-3">3 to 5 Business Days</td>
+                    <td className="p-3 border-r border-stone-200">Outside UP (Central, Western, Southern & Eastern India)</td>
+                    <td className="p-3 font-semibold text-emerald-950">Approximately 1 Week</td>
                   </tr>
                 </tbody>
               </table>
@@ -126,7 +133,7 @@ export default function ShippingPolicyPage() {
                 <strong>Immediate Hydration:</strong> Live saplings should be unloaded into a shaded location and lightly sprinkled with fresh water within 2 hours of arrival to counter travel warmth.
               </li>
               <li>
-                <strong>Report Any Transit Damage Within 24 Hours:</strong> In the rare instance of vehicular overturning, crate collapse, or mechanical damage to root-balls during transit, take clear date-stamped photographs or videos and contact our logistics coordinator immediately at +91 99568 79905 or navikisan@gmail.com.
+                <strong>Report Any Transit Damage Within 24 Hours:</strong> In the rare instance of vehicular overturning, crate collapse, or mechanical damage to root-balls during transit, take clear date-stamped photographs or videos and contact our logistics coordinator immediately at +91 99568 79905 / +91 96444 15555 or navikisan@gmail.com.
               </li>
             </ul>
           </section>
@@ -136,7 +143,7 @@ export default function ShippingPolicyPage() {
               6. Force Majeure & Weather Holds
             </h2>
             <p>
-              Living plants cannot be dispatched during severe meteorological anomalies such as extreme heatwaves (&gt;45°C), active severe frost alerts, or flooded national arterial highways. In such circumstances, our chief nursery agronomist reserves the right to momentarily hold dispatch until safe travel temperatures resume to preserve your crop investment.
+              Living plants cannot be dispatched during severe meteorological anomalies such as extreme heatwaves (&gt;45°C), active severe frost alerts, or flooded national arterial highways. In such circumstances, our chief agronomist reserves the right to momentarily hold dispatch until safe travel temperatures resume to preserve your crop investment.
             </p>
           </section>
 
@@ -150,7 +157,7 @@ export default function ShippingPolicyPage() {
             <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-200/70 text-emerald-950 space-y-1">
               <p className="font-semibold">Satyasai Navkisan Green India Private Limited — Logistics Desk</p>
               <p>Estate Office: Lucknow, Uttar Pradesh - India</p>
-              <p>Helpline: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
+              <p>Helpline: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a> • <a href="tel:+91 96444 15555" className="font-bold underline">+91 96444 15555</a></p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
             </div>
           </section>
