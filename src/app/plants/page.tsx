@@ -20,7 +20,9 @@ import {
   FunnelIcon,
   SparklesIcon,
   CheckCircleIcon,
+  ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
+import { useCart } from "@/context/CartContext";
 
 function PlantsCatalogContent() {
   const searchParams = useSearchParams();
@@ -87,8 +89,11 @@ function PlantsCatalogContent() {
     );
   }, [activeCategory, searchQuery]);
 
+  const { addToCart } = useCart();
+
   const handleAddToCart = (product: ProductItem, qty: number) => {
-    setCartCount((prev) => prev + qty);
+    addToCart(product, qty);
+    setSelectedProduct(null);
   };
 
   return (
@@ -265,15 +270,24 @@ function PlantsCatalogContent() {
                       </div>
                     </div>
 
-                    {/* View Details Button matching Panel 2 & 3 */}
-                    <div className="p-4 pt-0">
+                    {/* Actions: Add to Cart & View Details */}
+                    <div className="p-4 pt-0 grid grid-cols-2 gap-2">
                       <button
                         type="button"
                         onClick={() => setSelectedProduct(product)}
-                        className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-emerald-900/20 transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+                        className="py-2.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold text-xs shadow-2xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1"
                       >
-                        <span>View Details</span>
-                        <ChevronRightIcon className="w-3.5 h-3.5" />
+                        <span>Details</span>
+                        <ChevronRightIcon className="w-3 h-3 text-stone-500" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => addToCart(product, product.defaultQty || product.minOrder || 10)}
+                        className="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-900/20 transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+                      >
+                        <ShoppingCartIcon className="w-3.5 h-3.5" />
+                        <span>Add to Cart</span>
                       </button>
                     </div>
                   </div>

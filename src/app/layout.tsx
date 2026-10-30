@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import { CartProvider } from "@/context/CartContext";
+import CartModal from "@/components/CartModal";
+import FloatingCartPill from "@/components/FloatingCartPill";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -59,8 +62,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#fafaf9] text-stone-900 selection:bg-emerald-900 selection:text-emerald-100">
-        {children}
-        <MobileBottomNav />
+        <CartProvider>
+          {children}
+          <FloatingCartPill />
+          <CartModal />
+          <MobileBottomNav />
+        </CartProvider>
       </body>
     </html>
   );

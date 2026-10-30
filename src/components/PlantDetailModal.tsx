@@ -14,6 +14,7 @@ import {
   MinusIcon,
 } from "@heroicons/react/24/outline";
 import { ProductItem } from "@/data/categoriesProductData";
+import { useCart } from "@/context/CartContext";
 
 interface PlantDetailModalProps {
   product: ProductItem | null;
@@ -26,6 +27,7 @@ export default function PlantDetailModal({
   onClose,
   onAddToCart,
 }: PlantDetailModalProps) {
+  const { addToCart } = useCart();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(50);
   const [isAdded, setIsAdded] = useState(false);
@@ -63,11 +65,12 @@ export default function PlantDetailModal({
   };
 
   const handleAddToCartClick = () => {
+    addToCart(product, quantity);
     if (onAddToCart) {
       onAddToCart(product, quantity);
     }
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2200);
+    onClose();
   };
 
   const handleWhatsAppEnquiry = () => {

@@ -14,6 +14,7 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
 import { getAllProducts, ProductItem } from "@/data/categoriesProductData";
+import { useCart } from "@/context/CartContext";
 
 interface NavbarProps {
   onOpenCalculator?: (plantId?: string) => void;
@@ -24,6 +25,7 @@ export default function Navbar({}: NavbarProps = {}) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { openCart, totalCartItems } = useCart();
 
   // Search state
   const [searchQuery, setSearchQuery] = useState("");
@@ -254,6 +256,22 @@ export default function Navbar({}: NavbarProps = {}) {
             >
               <span>Catalog</span>
             </Link>
+
+            {/* Shopping Cart Button */}
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label="Open Nursery Cart"
+              className="relative inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-stone-100 hover:bg-emerald-50 text-stone-800 hover:text-emerald-900 border border-stone-200/90 transition-all active:scale-95 cursor-pointer"
+            >
+              <ShoppingCartIcon className="w-4 h-4 text-emerald-800" />
+              <span className="hidden sm:inline text-xs font-bold">Cart</span>
+              {totalCartItems > 0 && (
+                <span className="bg-emerald-700 text-white font-extrabold text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center shadow-xs">
+                  {totalCartItems > 99 ? "99+" : totalCartItems}
+                </span>
+              )}
+            </button>
 
             {/* Direct Phone Call */}
             <a
