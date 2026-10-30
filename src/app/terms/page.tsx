@@ -232,7 +232,7 @@ export default function TermsPage() {
               </p>
               <p>CIN: U01110UP2018PTC101289 • GST: 09AAZCS8852J1Z6</p>
               <p>Registered Office: Lucknow, Uttar Pradesh, India</p>
-              <p>Phone: 07942637905 • Email: navikisan@gmail.com</p>
+              <p>Phone: +91 99568 79905 • Email: navikisan@gmail.com</p>
             </div>
           </section>
         </div>

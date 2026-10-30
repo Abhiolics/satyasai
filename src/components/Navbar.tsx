@@ -21,7 +21,7 @@ interface NavbarProps {
   onSelectPlant?: (plantId: string) => void;
 }
 
-export default function Navbar({}: NavbarProps = {}) {
+export default function Navbar({ }: NavbarProps = {}) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -92,11 +92,10 @@ export default function Navbar({}: NavbarProps = {}) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3 sm:pt-4 transition-all duration-300">
       <nav
-        className={`mx-auto max-w-7xl transition-all duration-300 rounded-2xl sm:rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 relative ${
-          isScrolled
+        className={`mx-auto max-w-7xl transition-all duration-300 rounded-2xl sm:rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 relative ${isScrolled
             ? "glass-panel shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-white/80 bg-white/95 backdrop-blur-xl"
             : "bg-white/90 backdrop-blur-xl border border-white/70 shadow-sm"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between gap-3">
           {/* Left Side: Real Logo & Company Title */}
@@ -132,11 +131,10 @@ export default function Navbar({}: NavbarProps = {}) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    isActive
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${isActive
                       ? "text-emerald-950 font-bold"
                       : "text-stone-600 hover:text-stone-950 hover:bg-white/60"
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -275,7 +273,7 @@ export default function Navbar({}: NavbarProps = {}) {
 
             {/* Direct Phone Call */}
             <a
-              href="tel:07942637905"
+              href="tel:+91 99568 79905"
               className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-md shadow-emerald-950/20 transition-all active:scale-95"
             >
               <PhoneIcon className="w-3.5 h-3.5 text-white shrink-0" />

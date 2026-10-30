@@ -148,7 +148,7 @@ export default function PrivacyPage() {
               </p>
               <p>CIN: U01110UP2018PTC101289 • GST: 09AAZCS8852J1Z6</p>
               <p>Registered Office: Lucknow, Uttar Pradesh, India</p>
-              <p>Phone: 07942637905</p>
+              <p>Phone: +91 99568 79905</p>
               <p>Email: navikisan@gmail.com</p>
             </div>
           </section>

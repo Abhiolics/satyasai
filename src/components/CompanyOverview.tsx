@@ -33,7 +33,7 @@ export default function CompanyOverview() {
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-stone-100/60 rounded-full blur-2xl pointer-events-none -ml-20 -mb-20" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
 
         {/* Main Editorial Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -97,7 +97,7 @@ export default function CompanyOverview() {
                   </a> */}
 
                   <a
-                    href="tel:07942637905"
+                    href="tel:+91 99568 79905"
                     className="py-2.5 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-850 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <PhoneIcon className="w-3.5 h-3.5 text-emerald-800" />
@@ -122,13 +122,13 @@ export default function CompanyOverview() {
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-stone-100">
                 <div>
                   <h3 className="text-xs font-bold text-stone-400 uppercase ">
-                   Business Details
+                    Business Details
                   </h3>
                   <p className="text-xs text-stone-600 mt-0.5">
                     Official registration details.
                   </p>
                 </div>
-                
+
               </div>
 
               {/* Specification Grid */}

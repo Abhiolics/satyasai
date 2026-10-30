@@ -107,13 +107,12 @@ export default function CartModal() {
       )
       .join("\n\n");
 
-    const message = `🌿 *NEW NURSERY ORDER INQUIRY*\n*Satyasai Navkisan Green India Private Limited*\nLucknow, Uttar Pradesh | GST: 09AAZCS8852J1Z6\n────────────────────────────\n👤 *CUSTOMER DETAILS:*\n• *Name:* ${customerName.trim() || "Customer"}\n• *Delivery Location:* ${customerLocation.trim() || "Lucknow, UP"}\n• *Phone:* ${customerPhone.trim() || "Not provided"}${
-      farmAcreage.trim() ? `\n• *Plantation Size:* ${farmAcreage.trim()}` : ""
-    }\n\n📦 *ORDERED NURSERY STOCK:*\n${itemsSummary}\n\n────────────────────────────\n💰 *ESTIMATED ORDER TOTAL:* ₹${totalCartAmount.toLocaleString(
-      "en-IN"
-    )} (${totalCartItems} total plants/units)\n🌱 *Delivery Mode:* Direct Nursery Dispatch / Farm Gate Delivery in UP\n\nPlease confirm sapling availability, dispatch timeline, and advance invoice details.`;
+    const message = `🌿 *NEW NURSERY ORDER INQUIRY*\n*Satyasai Navkisan Green India Private Limited*\nLucknow, Uttar Pradesh | GST: 09AAZCS8852J1Z6\n────────────────────────────\n👤 *CUSTOMER DETAILS:*\n• *Name:* ${customerName.trim() || "Customer"}\n• *Delivery Location:* ${customerLocation.trim() || "Lucknow, UP"}\n• *Phone:* ${customerPhone.trim() || "Not provided"}${farmAcreage.trim() ? `\n• *Plantation Size:* ${farmAcreage.trim()}` : ""
+      }\n\n📦 *ORDERED NURSERY STOCK:*\n${itemsSummary}\n\n────────────────────────────\n💰 *ESTIMATED ORDER TOTAL:* ₹${totalCartAmount.toLocaleString(
+        "en-IN"
+      )} (${totalCartItems} total plants/units)\n🌱 *Delivery Mode:* Direct Nursery Dispatch / Farm Gate Delivery in UP\n\nPlease confirm sapling availability, dispatch timeline, and advance invoice details.`;
 
-    const whatsappUrl = `https://wa.me/917942637905?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919956879905?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -413,7 +412,7 @@ export default function CartModal() {
                       </div>
                     </div>
 
-                    {/* CONFIRM ORDER ON WHATSAPP BUTTON (07942637905) */}
+                    {/* CONFIRM ORDER ON WHATSAPP BUTTON (+91 99568 79905) */}
                     <div className="pt-2">
                       <button
                         type="submit"

@@ -77,7 +77,7 @@ export default function PlantDetailModal({
     const message = encodeURIComponent(
       `Hello Satyasai Navkisan Nursery,\n\nI am interested in ordering:\n• Plant: ${product.title}\n• Variety: ${product.variety}\n• Quantity: ${quantity} ${product.priceUnit || "Pieces"}\n• Price: ₹${product.price} / ${product.priceUnit || "Piece"}\n\nPlease share availability and freight details to my location.`
     );
-    window.open(`https://wa.me/917942637905?text=${message}`, "_blank");
+    window.open(`https://wa.me/919956879905?text=${message}`, "_blank");
   };
 
   return (

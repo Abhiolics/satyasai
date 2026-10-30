@@ -144,7 +144,7 @@ export default function RefundPolicyPage() {
             <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-200/70 text-emerald-950 space-y-1">
               <p className="font-semibold">Claims & Quality Assurance Desk</p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
-              <p>Direct Call / WhatsApp: <a href="tel:07942637905" className="font-bold underline">07942637905</a></p>
+              <p>Direct Call / WhatsApp: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
               <p>Operating Hours: Monday – Saturday (8:00 AM – 7:00 PM IST)</p>
             </div>
           </section>

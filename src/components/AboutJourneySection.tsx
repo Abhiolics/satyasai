@@ -33,7 +33,7 @@ export default function AboutJourneySection() {
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = `🌿 *NURSERY APPOINTMENT & VISIT REQUEST*\n*Satyasai Navkisan Green India Private Limited*\n────────────────────────────\n👤 *Visitor Name:* ${visitorName.trim()}\n📞 *Phone:* ${visitorPhone.trim()}\n📅 *Preferred Visit Date:* ${visitorDate || "Earliest available"}\n🏡 *Plantation / Land Area:* ${visitorPlotSize || "Not specified"}\n\n📍 *Purpose:* Nursery Polyhouse Tour & Farm Project Advisory at Lucknow.\n\nPlease confirm agronomist availability and Google Map location pin.`;
-    const url = `https://wa.me/917942637905?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/919956879905?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
     setIsAppointmentModalOpen(false);
   };
@@ -58,7 +58,7 @@ export default function AboutJourneySection() {
           </h2>
 
           <p className="mt-3.5 text-xs sm:text-sm text-stone-600 leading-relaxed font-normal max-w-lg mx-auto">
-At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and earn more from their land with quality plants and expert support.          </p>
+            At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and earn more from their land with quality plants and expert support.          </p>
 
           {/* Center Pill Button matching Reference Image */}
           <div className="mt-6 flex justify-center">
@@ -110,8 +110,8 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/65 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                
-                
+
+
               </div>
             </div>
           </motion.div>
@@ -158,7 +158,7 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
                     className="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover shadow-xs"
                   />
                 </div>
-                
+
               </div>
             </motion.div>
 
@@ -231,8 +231,8 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/65 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                
-                
+
+
               </div>
             </div>
           </motion.div>
@@ -265,7 +265,7 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
                 </span>
                 <span className="text-xs font-semibold text-stone-600">Survival</span>
               </div>
-              
+
             </div>
 
             <div className="mt-auto pt-6">
@@ -297,7 +297,7 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
             <span>GST: 09AAZCS8852J1Z6</span>
             <span>•</span>
             <span>CIN: U01110UP2018PTC101289</span>
-           
+
           </div>
         </motion.div>
       </div>
@@ -330,112 +330,112 @@ At NaviKisan, we help farmers grow healthy fruit trees, get better harvests, and
               transition={{ type: "spring", stiffness: 350, damping: 25 }}
               className="relative w-full max-w-lg rounded-3xl bg-[#fafaf9] border border-stone-200 shadow-2xl p-6 sm:p-8 text-stone-900 z-10"
             >
-            <button
-              onClick={() => setIsAppointmentModalOpen(false)}
-              aria-label="Close modal"
-              className="absolute top-4 right-4 p-2 rounded-full bg-stone-200/80 hover:bg-stone-300 text-stone-800 transition-colors cursor-pointer"
-            >
-              <XMarkIcon className="w-5 h-5" />
-            </button>
+              <button
+                onClick={() => setIsAppointmentModalOpen(false)}
+                aria-label="Close modal"
+                className="absolute top-4 right-4 p-2 rounded-full bg-stone-200/80 hover:bg-stone-300 text-stone-800 transition-colors cursor-pointer"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
 
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-950 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                Nursery Tour & Advisory
-              </span>
-            </div>
-
-            <h3 className="text-2xl font-editorial font-bold text-stone-950 tracking-tight">
-              Book a Nursery Appointment
-            </h3>
-            <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-              Schedule an in-person tour of our automated polyhouses in Lucknow or book a 1-on-1 agronomy consultation for your plantation project.
-            </p>
-
-            <form onSubmit={handleBookingSubmit} className="mt-5 space-y-3.5">
-              <div>
-                <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                  Full Name *
-                </label>
-                <div className="relative">
-                  <UserIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Ramesh Chandra Verma"
-                    value={visitorName}
-                    onChange={(e) => setVisitorName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
-                  />
-                </div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-950 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  Nursery Tour & Advisory
+                </span>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                  Mobile / WhatsApp Number *
-                </label>
-                <div className="relative">
-                  <PhoneIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
-                  <input
-                    type="tel"
-                    required
-                    placeholder="e.g. 9876543210"
-                    value={visitorPhone}
-                    onChange={(e) => setVisitorPhone(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
-                  />
-                </div>
-              </div>
+              <h3 className="text-2xl font-editorial font-bold text-stone-950 tracking-tight">
+                Book a Nursery Appointment
+              </h3>
+              <p className="text-xs text-stone-600 mt-1 leading-relaxed">
+                Schedule an in-person tour of our automated polyhouses in Lucknow or book a 1-on-1 agronomy consultation for your plantation project.
+              </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <form onSubmit={handleBookingSubmit} className="mt-5 space-y-3.5">
                 <div>
                   <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                    Preferred Visit Date
+                    Full Name *
                   </label>
                   <div className="relative">
-                    <CalendarDaysIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
-                    <input
-                      type="date"
-                      value={visitorDate}
-                      onChange={(e) => setVisitorDate(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                    Plantation Acreage (Optional)
-                  </label>
-                  <div className="relative">
-                    <MapPinIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
+                    <UserIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
                     <input
                       type="text"
-                      placeholder="e.g. 10 Acres in Malihabad"
-                      value={visitorPlotSize}
-                      onChange={(e) => setVisitorPlotSize(e.target.value)}
+                      required
+                      placeholder="e.g. Ramesh Chandra Verma"
+                      value={visitorName}
+                      onChange={(e) => setVisitorName(e.target.value)}
                       className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
                     />
                   </div>
                 </div>
-              </div>
 
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full py-3 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
-                >
-                  <span>Confirm Appointment on WhatsApp</span>
-                  <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" />
-                </button>
-                <p className="text-[10px] text-center text-stone-500 mt-2">
-                  Direct connection with Satyasai Navkisan Nursery Desk (07942637905).
-                </p>
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
+                <div>
+                  <label className="block text-[11px] font-semibold text-stone-700 mb-1">
+                    Mobile / WhatsApp Number *
+                  </label>
+                  <div className="relative">
+                    <PhoneIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
+                    <input
+                      type="tel"
+                      required
+                      placeholder="e.g. 9876543210"
+                      value={visitorPhone}
+                      onChange={(e) => setVisitorPhone(e.target.value)}
+                      className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-semibold text-stone-700 mb-1">
+                      Preferred Visit Date
+                    </label>
+                    <div className="relative">
+                      <CalendarDaysIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
+                      <input
+                        type="date"
+                        value={visitorDate}
+                        onChange={(e) => setVisitorDate(e.target.value)}
+                        className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-semibold text-stone-700 mb-1">
+                      Plantation Acreage (Optional)
+                    </label>
+                    <div className="relative">
+                      <MapPinIcon className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
+                      <input
+                        type="text"
+                        placeholder="e.g. 10 Acres in Malihabad"
+                        value={visitorPlotSize}
+                        onChange={(e) => setVisitorPlotSize(e.target.value)}
+                        className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-emerald-700"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-white font-bold text-xs tracking-wide flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
+                  >
+                    <span>Confirm Appointment on WhatsApp</span>
+                    <ArrowRightIcon className="w-3.5 h-3.5 text-emerald-400" />
+                  </button>
+                  <p className="text-[10px] text-center text-stone-500 mt-2">
+                    Direct connection with Satyasai Navkisan Nursery Desk (+91 99568 79905).
+                  </p>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -98,7 +98,7 @@ export default function ContactPage() {
       const error = err as Error;
       setErrorMsg(
         error.message ||
-          "There was an error routing your request. Please reach us directly at navikisan@gmail.com."
+        "There was an error routing your request. Please reach us directly at navikisan@gmail.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -143,7 +143,7 @@ export default function ContactPage() {
 
           {/* Two-Column Split Layout matching reference image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            
+
             {/* ---------------------------------------------------- */}
             {/* LEFT COLUMN: "Get in touch" + Details                */}
             {/* ---------------------------------------------------- */}
@@ -187,10 +187,10 @@ export default function ContactPage() {
                     Phone:
                   </div>
                   <a
-                    href="tel:07942637905"
+                    href="tel:+91 99568 79905"
                     className="text-base sm:text-lg font-semibold text-stone-900 hover:text-emerald-950 transition-colors mt-1 block"
                   >
-                    07942637905
+                    +91 99568 79905
                   </a>
                 </div>
 
@@ -443,7 +443,7 @@ export default function ContactPage() {
           </div>
         </motion.div>
 
-    
+
       </div>
 
       {/* Footer */}

@@ -109,7 +109,7 @@ export default function Footer() {
 
                   {/* WhatsApp Icon */}
                   <a
-                    href="https://wa.me/917942637905"
+                    href="https://wa.me/919956879905"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
@@ -280,7 +280,7 @@ export default function Footer() {
                     <span>Graft Purity Guarantee</span>
                   </Link>
                 </li>
-          
+
               </ul>
             </div>
 
@@ -301,10 +301,10 @@ export default function Footer() {
                 {/* Direct Phone Number & Email */}
                 <div className="mb-4 space-y-1">
                   <a
-                    href="tel:07942637905"
+                    href="tel:+919956879905"
                     className="text-base font-medium text-emerald-100 hover:text-white transition-colors block"
                   >
-                    07942637905
+                    +91 99568 79905
                   </a>
                   <a
                     href="mailto:navikisan@gmail.com"

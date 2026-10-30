@@ -126,7 +126,7 @@ export default function ShippingPolicyPage() {
                 <strong>Immediate Hydration:</strong> Live saplings should be unloaded into a shaded location and lightly sprinkled with fresh water within 2 hours of arrival to counter travel warmth.
               </li>
               <li>
-                <strong>Report Any Transit Damage Within 24 Hours:</strong> In the rare instance of vehicular overturning, crate collapse, or mechanical damage to root-balls during transit, take clear date-stamped photographs or videos and contact our logistics coordinator immediately at 07942637905 or navikisan@gmail.com.
+                <strong>Report Any Transit Damage Within 24 Hours:</strong> In the rare instance of vehicular overturning, crate collapse, or mechanical damage to root-balls during transit, take clear date-stamped photographs or videos and contact our logistics coordinator immediately at +91 99568 79905 or navikisan@gmail.com.
               </li>
             </ul>
           </section>
@@ -150,7 +150,7 @@ export default function ShippingPolicyPage() {
             <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-200/70 text-emerald-950 space-y-1">
               <p className="font-semibold">Satyasai Navkisan Green India Private Limited — Logistics Desk</p>
               <p>Estate Office: Lucknow, Uttar Pradesh - India</p>
-              <p>Helpline: <a href="tel:07942637905" className="font-bold underline">07942637905</a></p>
+              <p>Helpline: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
             </div>
           </section>

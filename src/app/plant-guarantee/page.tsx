@@ -135,7 +135,7 @@ export default function PlantGuaranteePage() {
               <p className="font-semibold">Botanical Certification Office</p>
               <p>Satyasai Navkisan Green India Private Limited</p>
               <p>Estate: Mohanlalganj / Lucknow, Uttar Pradesh - India</p>
-              <p>Horticulture Desk: <a href="tel:07942637905" className="font-bold underline">07942637905</a></p>
+              <p>Horticulture Desk: <a href="tel:+91 99568 79905" className="font-bold underline">+91 99568 79905</a></p>
               <p>Email: <a href="mailto:navikisan@gmail.com" className="font-bold underline">navikisan@gmail.com</a></p>
             </div>
           </section>
