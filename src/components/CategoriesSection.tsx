@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -26,6 +26,7 @@ import {
   SparklesIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  FunnelIcon,
 } from "@heroicons/react/24/outline";
 import { useCart } from "@/context/CartContext";
 
@@ -33,6 +34,8 @@ export default function CategoriesSection() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("mango");
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [justAddedId, setJustAddedId] = useState<string | null>(null);
+  const [priceFilter, setPriceFilter] = useState<string>("all");
+  const [sortOrder, setSortOrder] = useState<string>("default");
   const { cart, openCart, addToCart, totalCartItems, totalCartAmount } = useCart();
 
   // Horizontal scroll container reference for circular category reel
@@ -40,6 +43,39 @@ export default function CategoriesSection() {
 
   const currentProducts = PRODUCTS_BY_CATEGORY[activeCategory] || [];
   const currentCategoryInfo = CATEGORIES_LIST.find((c) => c.id === activeCategory);
+
+  // Min and max rates for the active category
+  const { minRate, maxRate } = useMemo(() => {
+    if (currentProducts.length === 0) return { minRate: 0, maxRate: 0 };
+    const prices = currentProducts.map((p) => p.price);
+    return {
+      minRate: Math.min(...prices),
+      maxRate: Math.max(...prices),
+    };
+  }, [currentProducts]);
+
+  // Filtered & sorted products based on selected rate filter
+  const filteredProducts = useMemo(() => {
+    let list = [...currentProducts];
+
+    if (priceFilter === "under-50") {
+      list = list.filter((p) => p.price < 50);
+    } else if (priceFilter === "50-150") {
+      list = list.filter((p) => p.price >= 50 && p.price <= 150);
+    } else if (priceFilter === "150-300") {
+      list = list.filter((p) => p.price > 150 && p.price <= 300);
+    } else if (priceFilter === "300-plus") {
+      list = list.filter((p) => p.price > 300);
+    }
+
+    if (sortOrder === "low-to-high") {
+      list.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "high-to-low") {
+      list.sort((a, b) => b.price - a.price);
+    }
+
+    return list;
+  }, [currentProducts, priceFilter, sortOrder]);
 
   // Initialize quantities for current products
   useEffect(() => {
@@ -169,7 +205,10 @@ export default function CategoriesSection() {
                 <button
                   key={cat.id}
                   type="button"
-                  onClick={() => setActiveCategory(cat.id)}
+                  onClick={() => {
+                    setActiveCategory(cat.id);
+                    setPriceFilter("all");
+                  }}
                   className="group flex flex-col items-center shrink-0 focus:outline-hidden transition-all duration-300 cursor-pointer"
                 >
                   {/* Modern Circular Image Frame - Full Unclipped Circle */}
@@ -221,24 +260,107 @@ export default function CategoriesSection() {
           </div>
         </div>
 
-        {/* Category Active Header Bar */}
-        <div className="flex flex-wrap items-center justify-between pb-3.5 mb-6 border-b border-stone-200 gap-2">
-          <div className="flex items-center gap-2">
-           
-            <span className="text-sm font-bold text-stone-950">
-              {currentCategoryInfo?.name} ({currentProducts.length} Verified Varieties)
-            </span>
+        {/* ========================================================================= */}
+        {/* RATE / PRICE FILTER & SORT BAR FOR EVERY CATEGORY                         */}
+        {/* ========================================================================= */}
+        <div className="bg-white rounded-2xl border border-stone-200/90 p-3.5 sm:p-4 mb-6 shadow-xs">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-stone-100">
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-base sm:text-lg font-bold text-stone-950">
+                  {currentCategoryInfo?.name}
+                </span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-bold border border-emerald-200">
+                  {filteredProducts.length} {filteredProducts.length === 1 ? "Variety" : "Varieties"}
+                </span>
+                {minRate > 0 && (
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600 font-medium">
+                    Rate: ₹{minRate} – ₹{maxRate} / piece
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-stone-500 mt-1">
+                Direct farm gate wholesale rates • Select quantities & add to cart for instant shipment booking
+              </p>
+            </div>
+
+            {/* Sort by Rate Dropdown */}
+            <div className="flex items-center gap-2 self-start md:self-auto shrink-0">
+              <span className="text-xs font-semibold text-stone-600 whitespace-nowrap">Sort:</span>
+              <select
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
+                className="text-xs font-semibold bg-stone-50 border border-stone-300 text-stone-850 rounded-xl px-2.5 py-1.5 focus:outline-hidden focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 cursor-pointer shadow-2xs"
+              >
+                <option value="default">Default Order</option>
+                <option value="low-to-high">Rate: Low to High (₹ ↑)</option>
+                <option value="high-to-low">Rate: High to Low (₹ ↓)</option>
+              </select>
+            </div>
           </div>
-          <span className="text-xs text-stone-500 hidden sm:inline">
-            Direct farm gate rates • Tap Add to Cart to build your shipment
-          </span>
+
+          {/* Quick Rate Filter Pills */}
+          <div className="flex items-center gap-1.5 sm:gap-2 pt-3 overflow-x-auto scrollbar-none">
+            <span className="text-xs font-bold text-stone-800 flex items-center gap-1.5 mr-1 shrink-0">
+              <FunnelIcon className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Filter by Rate:</span>
+            </span>
+
+            {[
+              { id: "all", label: "All Rates" },
+              { id: "under-50", label: "Under ₹50" },
+              { id: "50-150", label: "₹50 - ₹150" },
+              { id: "150-300", label: "₹150 - ₹300" },
+              { id: "300-plus", label: "₹300+" },
+            ].map((filter) => {
+              const isActive = priceFilter === filter.id;
+              let count = currentProducts.length;
+              if (filter.id === "under-50") count = currentProducts.filter((p) => p.price < 50).length;
+              else if (filter.id === "50-150") count = currentProducts.filter((p) => p.price >= 50 && p.price <= 150).length;
+              else if (filter.id === "150-300") count = currentProducts.filter((p) => p.price > 150 && p.price <= 300).length;
+              else if (filter.id === "300-plus") count = currentProducts.filter((p) => p.price > 300).length;
+
+              return (
+                <button
+                  key={filter.id}
+                  type="button"
+                  onClick={() => setPriceFilter(filter.id)}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer ${
+                    isActive
+                      ? "bg-emerald-950 text-white shadow-xs"
+                      : "bg-stone-100 hover:bg-stone-200 text-stone-700"
+                  }`}
+                >
+                  <span>{filter.label}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                      isActive ? "bg-emerald-800 text-emerald-100" : "bg-stone-200 text-stone-600"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+
+            {priceFilter !== "all" && (
+              <button
+                type="button"
+                onClick={() => setPriceFilter("all")}
+                className="text-xs text-rose-600 hover:text-rose-700 font-semibold underline ml-auto shrink-0 cursor-pointer"
+              >
+                Clear Filter
+              </button>
+            )}
+          </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. 3x3 CARDS GRID (9 Cards for Active Category - Compact Layout)          */}
+        {/* 2. CARDS GRID (Filtered by Rate for Active Category)                      */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4.5 animate-in fade-in duration-300">
-          {currentProducts.map((product) => {
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4.5 animate-in fade-in duration-300">
+            {filteredProducts.map((product) => {
             const currentQty = quantities[product.id] ?? product.defaultQty;
             const isJustAdded = justAddedId === product.id;
 
@@ -408,6 +530,24 @@ export default function CategoriesSection() {
             );
           })}
         </div>
+      ) : (
+        <div className="bg-white rounded-2xl border border-stone-200/90 p-8 sm:p-12 text-center flex flex-col items-center justify-center shadow-xs">
+          <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3">
+            <FunnelIcon className="w-6 h-6 text-stone-400" />
+          </div>
+          <h3 className="text-base font-bold text-stone-900">No varieties match this rate filter</h3>
+          <p className="text-xs text-stone-500 mt-1 max-w-sm">
+            There are no {currentCategoryInfo?.name} varieties currently priced in this rate bracket. Try selecting another rate range.
+          </p>
+          <button
+            type="button"
+            onClick={() => setPriceFilter("all")}
+            className="mt-4 px-4 py-2 rounded-xl bg-emerald-950 text-white text-xs font-semibold hover:bg-emerald-900 transition-all cursor-pointer shadow-xs"
+          >
+            Show All {currentCategoryInfo?.name} Rates ({currentProducts.length} Varieties)
+          </button>
+        </div>
+      )}
       </div>
     </section>
   );

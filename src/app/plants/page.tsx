@@ -39,6 +39,10 @@ function PlantsCatalogContent() {
   // Search filter query
   const [searchQuery, setSearchQuery] = useState(initialSearch);
 
+  // Rate filter & sort state
+  const [priceFilter, setPriceFilter] = useState<string>("all");
+  const [sortOrder, setSortOrder] = useState<string>("default");
+
   // Selected product for Panel 4 modal
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
@@ -53,6 +57,10 @@ function PlantsCatalogContent() {
   }, [queryCategory]);
 
   useEffect(() => {
+    setPriceFilter("all");
+  }, [activeCategory]);
+
+  useEffect(() => {
     if (initialSearch) {
       setSearchQuery(initialSearch);
     }
@@ -64,30 +72,65 @@ function PlantsCatalogContent() {
     );
   }, [activeCategory]);
 
-  // Filter products based on active category and optional search
-  const displayedProducts = useMemo(() => {
-    const categoryProducts = PRODUCTS_BY_CATEGORY[activeCategory] || [];
-    if (!searchQuery.trim()) {
-      return categoryProducts;
-    }
-    const q = searchQuery.toLowerCase().trim();
-    // If user is searching, also allow finding matching plants across categories if none in active
-    const inCategory = categoryProducts.filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        p.variety.toLowerCase().includes(q) ||
-        (p.description && p.description.toLowerCase().includes(q))
-    );
-    if (inCategory.length > 0) return inCategory;
+  const categoryProducts = useMemo(() => {
+    return PRODUCTS_BY_CATEGORY[activeCategory] || [];
+  }, [activeCategory]);
 
-    // Search across all products
-    return getAllProducts().filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        p.variety.toLowerCase().includes(q) ||
-        p.categoryId.toLowerCase().includes(q)
-    );
-  }, [activeCategory, searchQuery]);
+  const { minRate, maxRate } = useMemo(() => {
+    if (categoryProducts.length === 0) return { minRate: 0, maxRate: 0 };
+    const prices = categoryProducts.map((p) => p.price);
+    return {
+      minRate: Math.min(...prices),
+      maxRate: Math.max(...prices),
+    };
+  }, [categoryProducts]);
+
+  // Filter products based on active category, optional search, and rate filter
+  const displayedProducts = useMemo(() => {
+    let list: ProductItem[] = [];
+    if (!searchQuery.trim()) {
+      list = [...categoryProducts];
+    } else {
+      const q = searchQuery.toLowerCase().trim();
+      // If user is searching, also allow finding matching plants across categories if none in active
+      const inCategory = categoryProducts.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.variety.toLowerCase().includes(q) ||
+          (p.description && p.description.toLowerCase().includes(q))
+      );
+      if (inCategory.length > 0) {
+        list = inCategory;
+      } else {
+        list = getAllProducts().filter(
+          (p) =>
+            p.title.toLowerCase().includes(q) ||
+            p.variety.toLowerCase().includes(q) ||
+            p.categoryId.toLowerCase().includes(q)
+        );
+      }
+    }
+
+    // Apply Rate filter
+    if (priceFilter === "under-50") {
+      list = list.filter((p) => p.price < 50);
+    } else if (priceFilter === "50-150") {
+      list = list.filter((p) => p.price >= 50 && p.price <= 150);
+    } else if (priceFilter === "150-300") {
+      list = list.filter((p) => p.price > 150 && p.price <= 300);
+    } else if (priceFilter === "300-plus") {
+      list = list.filter((p) => p.price > 300);
+    }
+
+    // Apply Sort order
+    if (sortOrder === "low-to-high") {
+      list.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "high-to-low") {
+      list.sort((a, b) => b.price - a.price);
+    }
+
+    return list;
+  }, [categoryProducts, searchQuery, priceFilter, sortOrder]);
 
   const { addToCart } = useCart();
 
@@ -203,7 +246,7 @@ function PlantsCatalogContent() {
           {/* MAIN CONTENT: Header & Product Grid */}
           <section className="lg:col-span-3 flex flex-col">
             {/* Header with Title and Search Input */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-stone-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-stone-200">
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-stone-950 tracking-tight">
                   {currentCategoryInfo.name} Varieties ({displayedProducts.length})
@@ -223,6 +266,87 @@ function PlantsCatalogContent() {
                   placeholder="Search varieties..."
                   className="w-full pl-9 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-white border border-stone-300 focus:outline-hidden focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 shadow-xs"
                 />
+              </div>
+            </div>
+
+            {/* Rate / Price Filter & Sort Bar for this Category */}
+            <div className="bg-white rounded-2xl border border-stone-200/90 p-3 sm:p-4 mb-6 shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-100">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-bold text-stone-850 flex items-center gap-1.5">
+                    <FunnelIcon className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Filter by Rate:</span>
+                  </span>
+                  {minRate > 0 && (
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600 font-medium">
+                      Rates: ₹{minRate} – ₹{maxRate} / piece
+                    </span>
+                  )}
+                </div>
+
+                {/* Sort by Rate dropdown */}
+                <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+                  <span className="text-xs font-semibold text-stone-600 whitespace-nowrap">Sort:</span>
+                  <select
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value)}
+                    className="text-xs font-semibold bg-stone-50 border border-stone-300 text-stone-850 rounded-xl px-2.5 py-1.5 focus:outline-hidden focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 cursor-pointer shadow-2xs"
+                  >
+                    <option value="default">Default Order</option>
+                    <option value="low-to-high">Rate: Low to High (₹ ↑)</option>
+                    <option value="high-to-low">Rate: High to Low (₹ ↓)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Rate Filter Pills */}
+              <div className="flex items-center gap-1.5 sm:gap-2 pt-3 overflow-x-auto scrollbar-none">
+                {[
+                  { id: "all", label: "All Rates" },
+                  { id: "under-50", label: "Under ₹50" },
+                  { id: "50-150", label: "₹50 - ₹150" },
+                  { id: "150-300", label: "₹150 - ₹300" },
+                  { id: "300-plus", label: "₹300+" },
+                ].map((filter) => {
+                  const isActive = priceFilter === filter.id;
+                  let count = categoryProducts.length;
+                  if (filter.id === "under-50") count = categoryProducts.filter((p) => p.price < 50).length;
+                  else if (filter.id === "50-150") count = categoryProducts.filter((p) => p.price >= 50 && p.price <= 150).length;
+                  else if (filter.id === "150-300") count = categoryProducts.filter((p) => p.price > 150 && p.price <= 300).length;
+                  else if (filter.id === "300-plus") count = categoryProducts.filter((p) => p.price > 300).length;
+
+                  return (
+                    <button
+                      key={filter.id}
+                      type="button"
+                      onClick={() => setPriceFilter(filter.id)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer ${
+                        isActive
+                          ? "bg-emerald-950 text-white shadow-xs"
+                          : "bg-stone-100 hover:bg-stone-200 text-stone-700"
+                      }`}
+                    >
+                      <span>{filter.label}</span>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                          isActive ? "bg-emerald-800 text-emerald-100" : "bg-stone-200 text-stone-600"
+                        }`}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+
+                {priceFilter !== "all" && (
+                  <button
+                    type="button"
+                    onClick={() => setPriceFilter("all")}
+                    className="text-xs text-rose-600 hover:text-rose-700 font-semibold underline ml-auto shrink-0 cursor-pointer"
+                  >
+                    Clear Filter
+                  </button>
+                )}
               </div>
             </div>
 
@@ -295,18 +419,31 @@ function PlantsCatalogContent() {
               </div>
             ) : (
               <div className="bg-white rounded-2xl border border-stone-200 p-10 text-center flex flex-col items-center justify-center my-8">
-                <MagnifyingGlassIcon className="w-10 h-10 text-stone-300 mb-3" />
+                <FunnelIcon className="w-10 h-10 text-stone-300 mb-3" />
                 <h3 className="font-bold text-stone-800 text-lg">No matching plants found</h3>
                 <p className="text-stone-500 text-sm mt-1 max-w-md">
-                  No plants matched &quot;{searchQuery}&quot; in this category. Try clearing your search query or explore other categories.
+                  No plants matched your selected rate range or search query in this category.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="mt-4 px-5 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold"
-                >
-                  Clear Search
-                </button>
+                <div className="flex items-center gap-2 mt-4">
+                  {priceFilter !== "all" && (
+                    <button
+                      type="button"
+                      onClick={() => setPriceFilter("all")}
+                      className="px-4 py-2 rounded-xl bg-emerald-950 hover:bg-emerald-900 text-white text-xs font-semibold shadow-xs"
+                    >
+                      Reset Rate Filter ({categoryProducts.length} Plants)
+                    </button>
+                  )}
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold"
+                    >
+                      Clear Search
+                    </button>
+                  )}
+                </div>
               </div>
             )}
           </section>
